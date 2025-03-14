@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ben4mrfa3q4gc"]
+
+[ext_resource type="Texture2D" uid="uid://csda4ymxepb2h" path="res://Assets/NightSkyHDRI008_12K-HDR.exr" id="1_glv2v"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uu6xs"]
+panorama = ExtResource("1_glv2v")
+
+[sub_resource type="Sky" id="Sky_r0du0"]
+sky_material = SubResource("PanoramaSkyMaterial_uu6xs")
+
+[sub_resource type="Environment" id="Environment_rxg2q"]
+background_mode = 2
+sky = SubResource("Sky_r0du0")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rxg2q")
