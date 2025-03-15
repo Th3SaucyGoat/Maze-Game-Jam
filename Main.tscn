@@ -1,9 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://ben4mrfa3q4gc"]
+[gd_scene load_steps=35 format=3 uid="uid://ben4mrfa3q4gc"]
 
-[ext_resource type="Texture2D" uid="uid://csda4ymxepb2h" path="res://Assets/NightSkyHDRI008_12K-HDR.exr" id="1_glv2v"]
+[ext_resource type="Texture2D" uid="uid://ckdeppfdu4gv" path="res://Assets/NightSkyHDRI008_4K-HDR.exr" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://bylhy7qivqr1l" path="res://Assets/Player.tscn" id="2_uu6xs"]
+[ext_resource type="Script" uid="uid://i5jcj7ukvoen" path="res://addons/terrabrush/TerraBrush.cs" id="3_j4qnp"]
+[ext_resource type="Texture2D" uid="uid://cx434bw8jr3hr" path="res://Assets/Textures/Grass002_2K-JPG/Grass002_2K-JPG_Color.jpg" id="4_fpfj3"]
+[ext_resource type="Texture2D" uid="uid://cn5t62jvpurxp" path="res://Assets/Textures/Grass002_2K-JPG/Grass002_2K-JPG_NormalGL.jpg" id="5_sc1dx"]
+[ext_resource type="Texture2D" uid="uid://b3pyaho7yfqtp" path="res://Assets/Textures/Grass002_2K-JPG/Grass002_2K-JPG_Roughness.jpg" id="6_kjvhd"]
+[ext_resource type="Script" uid="uid://c2l8t4xcdxwvu" path="res://addons/terrabrush/Scripts/EditorResources/TextureSetResource.cs" id="7_5tuhn"]
+[ext_resource type="Texture2D" uid="uid://bop6vx7h6cfnq" path="res://Assets/Textures/Ground084_2K-JPG/Ground084_2K-JPG_Color.jpg" id="8_2gh4u"]
+[ext_resource type="Texture2D" uid="uid://yliyeacn8fm7" path="res://Assets/Textures/Ground084_2K-JPG/Ground084_2K-JPG_NormalGL.jpg" id="9_devvj"]
+[ext_resource type="Texture2D" uid="uid://duignkdydvdqw" path="res://Assets/Textures/Ground084_2K-JPG/Ground084_2K-JPG_Roughness.jpg" id="10_3b0ty"]
+[ext_resource type="Script" uid="uid://043vjblb04jf" path="res://addons/terrabrush/Scripts/EditorResources/TextureSetsResource.cs" id="11_bg4s2"]
+[ext_resource type="Texture2D" uid="uid://c2sb74fmvlato" path="res://Assets/sprite_0001.png" id="12_5tuhn"]
+[ext_resource type="Texture2D" uid="uid://sjv6giju7ews" path="res://Node3D/Heightmap_0_0.res" id="12_hhcpw"]
+[ext_resource type="Script" uid="uid://dgf8vwa2n8r11" path="res://addons/terrabrush/Scripts/EditorResources/FoliageDefinitionResource.cs" id="13_5tuhn"]
+[ext_resource type="Texture2D" uid="uid://deu4t7b61pubc" path="res://Node3D/Splatmap_0_0_0.res" id="13_mxvw5"]
+[ext_resource type="Script" uid="uid://d33x21vao7tj2" path="res://addons/terrabrush/Scripts/EditorResources/FoliageResource.cs" id="14_2gh4u"]
+[ext_resource type="Script" uid="uid://d2qebwt0ednya" path="res://addons/terrabrush/Scripts/EditorResources/ZoneResource.cs" id="14_xrxkg"]
+[ext_resource type="Texture2D" uid="uid://c4mxl4iindq1x" path="res://Node3D/Foliage_0_0_0.res" id="15_5tuhn"]
+[ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="15_sqvbp"]
+[ext_resource type="PackedScene" uid="uid://bqu85nkg82ubc" path="res://Bush.tscn" id="20_2gh4u"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uu6xs"]
 panorama = ExtResource("1_glv2v")
+energy_multiplier = 2.0
 
 [sub_resource type="Sky" id="Sky_r0du0"]
 sky_material = SubResource("PanoramaSkyMaterial_uu6xs")
@@ -11,8 +31,124 @@ sky_material = SubResource("PanoramaSkyMaterial_uu6xs")
 [sub_resource type="Environment" id="Environment_rxg2q"]
 background_mode = 2
 sky = SubResource("Sky_r0du0")
+ambient_light_source = 3
+ambient_light_color = Color(0.91055, 0.91055, 0.91055, 1)
+ambient_light_sky_contribution = 0.1
+ambient_light_energy = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_uu6xs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uu6xs"]
+
+[sub_resource type="Resource" id="Resource_hri7i"]
+script = ExtResource("7_5tuhn")
+Name = "Grass"
+AlbedoTexture = ExtResource("4_fpfj3")
+NormalTexture = ExtResource("5_sc1dx")
+RoughnessTexture = ExtResource("6_kjvhd")
+TextureDetail = -1
+Triplanar = false
+metadata/_custom_type_script = "uid://c2l8t4xcdxwvu"
+
+[sub_resource type="Resource" id="Resource_w3rk5"]
+script = ExtResource("7_5tuhn")
+Name = "Ground"
+AlbedoTexture = ExtResource("8_2gh4u")
+NormalTexture = ExtResource("9_devvj")
+RoughnessTexture = ExtResource("10_3b0ty")
+TextureDetail = -1
+Triplanar = false
+metadata/_custom_type_script = "uid://c2l8t4xcdxwvu"
+
+[sub_resource type="Resource" id="Resource_5mvff"]
+script = ExtResource("11_bg4s2")
+TextureSets = [SubResource("Resource_hri7i"), SubResource("Resource_w3rk5")]
+metadata/_custom_type_script = "uid://043vjblb04jf"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_devvj"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("12_5tuhn")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3b0ty"]
+material = SubResource("StandardMaterial3D_devvj")
+size = Vector2(2, 2)
+center_offset = Vector3(0, 0.45, 0)
+
+[sub_resource type="Resource" id="Resource_bg4s2"]
+script = ExtResource("13_5tuhn")
+Strategy = 2
+Mesh = SubResource("QuadMesh_3b0ty")
+MeshScale = Vector3(1, 1, 1)
+WindStrength = 0.1
+VisualInstanceLayers = 1
+LODLevels = 3
+LODRowsPerLevel = 50
+LODInitialCellWidth = 1.0
+Albedo = Color(0.127371, 0.127371, 0.127371, 1)
+AlbedoTextures = []
+NearestTextureFilter = false
+UseGroundColor = false
+CastShadow = false
+UseBrushScale = true
+RandomPlacementRange = 3.0
+ApplyOnTextureIndexes = PackedInt32Array()
+MaximumRenderDistance = 50
+EditorMaximumRenderDistance = 50
+metadata/_custom_type_script = "uid://dgf8vwa2n8r11"
+
+[sub_resource type="Resource" id="Resource_hhcpw"]
+script = ExtResource("14_2gh4u")
+Definition = SubResource("Resource_bg4s2")
+metadata/_custom_type_script = "uid://d33x21vao7tj2"
+
+[sub_resource type="Resource" id="Resource_2gh4u"]
+script = ExtResource("14_xrxkg")
+ZonePosition = Vector2i(0, 0)
+HeightMapTexture = ExtResource("12_hhcpw")
+SplatmapsTexture = [ExtResource("13_mxvw5")]
+FoliagesTexture = [ExtResource("15_5tuhn")]
+ObjectsTexture = []
+
+[sub_resource type="Resource" id="Resource_devvj"]
+script = ExtResource("15_sqvbp")
+Zones = [SubResource("Resource_2gh4u")]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rxg2q")
+
+[node name="Ground" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("BoxMesh_uu6xs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_uu6xs")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_uu6xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.94127, 0)
+
+[node name="TerraBrush" type="Node3D" parent="."]
+script = ExtResource("3_j4qnp")
+DataPath = "res://Node3D"
+LODInitialCellWidth = 5.0
+TextureSets = SubResource("Resource_5mvff")
+Foliages = [SubResource("Resource_hhcpw")]
+Objects = []
+TerrainZones = SubResource("Resource_devvj")
+metadata/_custom_type_script = "uid://i5jcj7ukvoen"
+metadata/_edit_lock_ = true
+
+[node name="Maze" type="Node3D" parent="."]
+
+[node name="Bush" parent="." instance=ExtResource("20_2gh4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279232, 3.3, 9.96883)
