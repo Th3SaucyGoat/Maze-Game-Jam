@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var interactableType = "WoodPlank"
+const ResourceType = preload("res://resource_type.gd").ResourceType
 
 func _ready() -> void:
 	add_to_group("interaction_areas")
@@ -9,5 +9,12 @@ func _ready() -> void:
 	connect("body_entered", player._on_area_entered.bind(self))
 	connect("body_exited", player._on_area_exited.bind(self))
 
-func get_interactable_type() -> String:
-	return interactableType
+# Right now interactable type is the same as the resource type
+# Any new interactables may need to change this
+func get_interactable_type() -> ResourceType:
+	var parent = get_parent()
+	if parent:
+		return parent.resourceType
+	
+	push_error("Resource must have a type!")
+	return ResourceType.WOOD_PLANK

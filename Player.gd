@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+const ResourceType = preload("res://resource_type.gd").ResourceType
+
 @onready var head = $Head
 @onready var camera = $Head/Camera
 #@onready var flashLight = $Head/FlashLight
@@ -65,5 +67,8 @@ func interaction() -> void:
 	
 	if Input.is_action_just_pressed("Interact"):
 		match currentInteractable.get_interactable_type():
-			"WoodPlank":
+			ResourceType.WOOD_PLANK:
 				print("Wood")
+			var unknown:
+				var resourceName = ResourceType.keys()[unknown]
+				print("Found a \"%s\" (dunno wtf this is)" % resourceName)
