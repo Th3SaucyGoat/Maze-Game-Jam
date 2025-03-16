@@ -11,7 +11,10 @@ const SPRINTSPEED = 8.0
 const JUMP_VELOCITY = 4.5
 const LOOK_SENSITIVITY = .003
 
+var currentInteractable: Area3D = null
+
 func _ready():
+	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -34,8 +37,8 @@ func _physics_process(delta: float) -> void:
 	currentSpeed = SPRINTSPEED if Input.is_action_pressed("Sprint") else SPEED
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("MoveLeft", "MoveRight", "MoveForward", "MoveBackward")
-	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var inputDir = Input.get_vector("MoveLeft", "MoveRight", "MoveForward", "MoveBackward")
+	var direction = (head.transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * currentSpeed
 		velocity.z = direction.z * currentSpeed
@@ -44,3 +47,23 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, currentSpeed)
 
 	move_and_slide()
+
+func _process(delta: float) -> void:
+	interaction()
+
+func _on_area_entered(body: Node3D, area: Area3D):
+	if area.is_in_group("interaction_areas"):
+		currentInteractable = area
+	
+func _on_area_exited(body: Node3D, area: Area3D):
+	if area == currentInteractable:
+		currentInteractable = null
+
+func interaction() -> void:
+	if currentInteractable == null:
+		return
+	
+	if Input.is_action_just_pressed("Interact"):
+		match currentInteractable.get_interactable_type():
+			"WoodPlank":
+				print("Wood")
