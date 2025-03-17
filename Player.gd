@@ -14,6 +14,11 @@ const JUMP_VELOCITY = 4.5
 const LOOK_SENSITIVITY = .003
 
 var currentInteractable: Area3D = null
+var inventory = {
+	ResourceType.WOOD_PLANK: 0,
+	ResourceType.NAILS: 0,
+	ResourceType.HAMMER: 0,
+}
 
 func _ready():
 	add_to_group("player")
@@ -66,9 +71,13 @@ func interaction() -> void:
 		return
 	
 	if Input.is_action_just_pressed("Interact"):
-		match currentInteractable.get_interactable_type():
-			ResourceType.WOOD_PLANK:
-				print("Wood")
-			var unknown:
-				var resourceName = ResourceType.keys()[unknown]
-				print("Found a \"%s\" (dunno wtf this is)" % resourceName)
+		# Resource type is currently the same as interactble type
+		var resourceType = currentInteractable.get_interactable_type()
+		var resourceName = ResourceType.keys()[resourceType]
+		
+		if inventory.has(resourceType):
+			inventory[resourceType] += 1
+			var count = inventory[resourceType]
+			print("Gathered %s. Now have %d" % [resourceName, count])
+		else:
+			print("Found a \"%s\" (dunno wtf this is)" % resourceName)
