@@ -283,4 +283,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77421, 3.3, 9.96883)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.279, 3.3, 9.969)
 
 [node name="WoodResource" parent="." instance=ExtResource("24_hhcpw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8676, 0, 19.724)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.639, 0, 19.724)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbfx0ncleqmlm"]
+
+[ext_resource type="Script" uid="uid://d2racdqwt0gnc" path="res://resource.gd" id="1_psx28"]
+[ext_resource type="Script" uid="uid://dmsymaysonyfj" path="res://resource_interaction_area.gd" id="2_cpix3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3jy6n"]
+
+[node name="Resource" type="Node3D"]
+script = ExtResource("1_psx28")
+
+[node name="Area3D" type="Area3D" parent="."]
+disable_mode = 1
+script = ExtResource("2_cpix3")
+
+[node name="InteractionCollider" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("CylinderShape3D_3jy6n")

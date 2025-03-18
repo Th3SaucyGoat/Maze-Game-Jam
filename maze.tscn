@@ -1,3 +1,3 @@
-[gd_scene format=3 uid="uid://cq473at5fo48x"]
+[gd_scene load_steps=0 format=3 uid="uid://cq473at5fo48x"]
 
 [node name="Maze" type="Node3D"]
