@@ -18,3 +18,6 @@ func get_interactable_type() -> ResourceType:
 	
 	push_error("Resource must have a type!")
 	return ResourceType.WOOD_PLANK
+
+func disable() -> void:
+	get_parent().queue_free()

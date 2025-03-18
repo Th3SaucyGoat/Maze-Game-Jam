@@ -81,3 +81,5 @@ func interaction() -> void:
 			print("Gathered %s. Now have %d" % [resourceName, count])
 		else:
 			print("Found a \"%s\" (dunno wtf this is)" % resourceName)
+			
+		currentInteractable.disable()
