@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://2a1svyx02x7q"]
-
-[ext_resource type="PackedScene" uid="uid://b2yswhl0ahboy" path="res://Assets/WoodPlank.blend" id="1_quuoj"]
-
-[node name="WoodPlank" instance=ExtResource("1_quuoj")]

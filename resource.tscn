@@ -1,16 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbfx0ncleqmlm"]
+[gd_scene load_steps=4 format=3 uid="uid://cbfx0ncleqmlm"]
 
 [ext_resource type="Script" uid="uid://d2racdqwt0gnc" path="res://resource.gd" id="1_psx28"]
-[ext_resource type="PackedScene" uid="uid://2a1svyx02x7q" path="res://wood_plank.tscn" id="1_txoar"]
 [ext_resource type="Script" uid="uid://dmsymaysonyfj" path="res://resource_interaction_area.gd" id="2_cpix3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3jy6n"]
 
 [node name="Resource" type="Node3D"]
 script = ExtResource("1_psx28")
-
-[node name="WoodPlank" parent="." instance=ExtResource("1_txoar")]
-transform = Transform3D(0.0976672, -0.00461113, -0.0209726, 0, 0.0976672, -0.0214735, 0.0214735, 0.0209726, 0.0953889, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 disable_mode = 1
