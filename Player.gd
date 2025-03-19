@@ -6,6 +6,8 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 @onready var camera = $Head/Camera
 #@onready var flashLight = $Head/FlashLight
 
+@onready var messageBoard = get_node("../MessageBoard")
+
 var currentSpeed
 
 const SPEED = 5.0
@@ -73,12 +75,20 @@ func interaction() -> void:
 	if Input.is_action_just_pressed("Interact"):
 		# Resource type is currently the same as interactble type
 		var resourceType = currentInteractable.get_interactable_type()
-		var resourceName = ResourceType.keys()[resourceType]
+		var resourceName
+		match resourceType:
+			ResourceType.WOOD_PLANK:
+				resourceName = "wood plank"
+			ResourceType.NAILS:
+				resourceName = "nails"
+			ResourceType.HAMMER:
+				resourceName = "hammer"
 		
 		if inventory.has(resourceType):
 			inventory[resourceType] += 1
 			var count = inventory[resourceType]
-			print("Gathered %s. Now have %d" % [resourceName, count])
+			var message = "Gathered %s. Now have %d" % [resourceName, count]
+			messageBoard.push_notification(message)
 		else:
 			print("Found a \"%s\" (dunno wtf this is)" % resourceName)
 			
