@@ -673,9 +673,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135, 3.3, 30)
 [node name="@Node3D@58603" type="Node3D" parent="." instance=ExtResource("1_mo8vl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135, 3.3, 45)
 
-[node name="@Node3D@58604" type="Node3D" parent="." instance=ExtResource("1_mo8vl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135, 3.3, 52.5)
-
 [node name="@Node3D@58605" type="Node3D" parent="." instance=ExtResource("1_mo8vl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135, 3.3, 60)
 
@@ -960,3 +957,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 3.3, 172.5)
 
 [node name="@Node3D@58699" type="Node3D" parent="." instance=ExtResource("1_mo8vl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180, 3.3, 180)
+
+[node name="SpawnPointsContainer" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="SpawnPointsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4603, 0, 8.0476)
+
+[node name="Marker3D2" type="Marker3D" parent="SpawnPointsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.953, 0, 80.4417)
+
+[node name="Marker3D3" type="Marker3D" parent="SpawnPointsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.739, 0, 172.969)
+
+[node name="Marker3D4" type="Marker3D" parent="SpawnPointsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5169, 0, 128.205)
+
+[node name="Marker3D5" type="Marker3D" parent="SpawnPointsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.953, 0, 21.7554)
+
+[node name="Marker3D6" type="Marker3D" parent="SpawnPointsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.396, 0, 68.019)
+
+[node name="Marker3D7" type="Marker3D" parent="SpawnPointsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.403, 0, 114.711)
+
+[node name="Marker3D8" type="Marker3D" parent="SpawnPointsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5821, 0, 101.646)
+
+[node name="Marker3D9" type="Marker3D" parent="SpawnPointsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6573, 0, 67.3765)
+
+[node name="Marker3D10" type="Marker3D" parent="SpawnPointsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.06, 0, 8.0476)

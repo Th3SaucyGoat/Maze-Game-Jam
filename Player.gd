@@ -10,9 +10,9 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 
 var currentSpeed
 
-const SPEED = 5.0
-const SPRINTSPEED = 8.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 10.0
+const SPRINTSPEED = 18.0
+const JUMP_VELOCITY = 8.0
 const LOOK_SENSITIVITY = .003
 
 var currentInteractable: Area3D = null
@@ -44,7 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() *2* delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
