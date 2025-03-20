@@ -346,7 +346,7 @@ Foliages = [SubResource("Resource_hhcpw"), SubResource("Resource_8h1yq")]
 Objects = [SubResource("Resource_wrbn1")]
 TerrainZones = SubResource("Resource_cxcit")
 metadata/_custom_type_script = "uid://i5jcj7ukvoen"
-metadata/_edit_lock_ = true
+metadata/_edit_lock_ = false
 
 [node name="Player" parent="." instance=ExtResource("2_uu6xs")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.76956, 0, 27.273)
@@ -514,7 +514,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.25335, 0, 160)
 script = ExtResource("59_oaklg")
 
 [node name="House" parent="." instance=ExtResource("27_sqvbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82536, 0.134308, -23.7407)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.82536, 0.134308, -23.7407)
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("59_ek63v")
@@ -564,7 +564,7 @@ vertical_alignment = 1
 [node name="MainMenu" type="Node2D" parent="UI"]
 position = Vector2(7.55637, -0.121281)
 rotation = 3.14159
-scale = Vector2(4.37114e-08, -1)
+scale = Vector2(1e-05, -1)
 
 [node name="Trees" type="Node3D" parent="."]
 
