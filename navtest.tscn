@@ -39,7 +39,7 @@ shape = SubResource("BoxShape3D_nlfv2")
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -7.31429, 2.90505, 5.79277)
 
 [node name="Deer" parent="." instance=ExtResource("2_nlfv2")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 9.15341, 0, -0.378836)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.0754, 0, -0.378836)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.155814, 0.987786, 0, -0.0998735, 0.0157541, 0.994875, 0.982724, -0.155015, 0.101108, 0, 11.8855, 0)

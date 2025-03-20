@@ -22,6 +22,12 @@ var inventory = {
 	ResourceType.HAMMER: 0,
 }
 
+enum PlayerState {
+	CONTROLLABLE,
+	JUMPSCARE_CUTSCENE,
+	VICTORY_CUTSCENE,
+}
+
 func _ready():
 	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -93,3 +99,6 @@ func interaction() -> void:
 			print("Found a \"%s\" (dunno wtf this is)" % resourceName)
 			
 		currentInteractable.disable()
+
+func jumpscare_cutscene(deer: Node3D):
+	print("JUMPSCARE")

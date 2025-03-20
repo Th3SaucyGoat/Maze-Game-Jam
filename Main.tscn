@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c4mxl4iindq1x" path="res://Node3D/Foliage_0_0_0.res" id="15_5tuhn"]
 [ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="15_sqvbp"]
 [ext_resource type="PackedScene" uid="uid://bqu85nkg82ubc" path="res://Bush.tscn" id="20_2gh4u"]
-[ext_resource type="PackedScene" uid="uid://dlbiplemc502w" path="res://MazeParent.tscn" id="20_xrxkg"]
+[ext_resource type="PackedScene" path="res://MazeParent.tscn" id="20_xrxkg"]
 [ext_resource type="PackedScene" uid="uid://cbfx0ncleqmlm" path="res://resource.tscn" id="24_hhcpw"]
 [ext_resource type="Script" uid="uid://f6l50gukcub6" path="res://message_board.gd" id="25_mxvw5"]
 [ext_resource type="Script" uid="uid://c1ekvr8a42r23" path="res://message_label.gd" id="26_xrxkg"]
