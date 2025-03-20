@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://mg3j6suy481r"]
+
+[ext_resource type="Script" uid="uid://d4a6lms8t5ekc" path="res://navigation_region.gd" id="1_tph7w"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_nlfv2"]
+agent_radius = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_4h6bl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nlfv2"]
+
+[node name="Navtest" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.396451, 0)
+navigation_mesh = SubResource("NavigationMesh_nlfv2")
+script = ExtResource("1_tph7w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11495, 0.396451, 0)
+mesh = SubResource("BoxMesh_4h6bl")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(4.995, 0, 0, 0, 0.21, 0, 0, 0, 4.195, -0.185269, -0.156449, 0)
+mesh = SubResource("BoxMesh_nlfv2")
+skeleton = NodePath("../..")

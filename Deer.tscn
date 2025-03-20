@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyf233xr8d7mj"]
+[gd_scene load_steps=3 format=3 uid="uid://dyf233xr8d7mj"]
 
 [ext_resource type="PackedScene" uid="uid://cpbprk134kjpx" path="res://Assets/Deer/Deer.glb" id="1_c3wsx"]
+[ext_resource type="Script" uid="uid://r44sr4odbsep" path="res://deer_navigation.gd" id="2_tijgk"]
 
 [node name="Deer" instance=ExtResource("1_c3wsx")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("2_tijgk")
+
+[node name="Deer" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
