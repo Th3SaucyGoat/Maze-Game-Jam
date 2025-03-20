@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://7tfeq885k6c2"]
+
+[ext_resource type="PackedScene" uid="uid://dygss0qwps6" path="res://Assets/Test/House.blend" id="1_k1gti"]
+[ext_resource type="Script" uid="uid://dp1r1ry1qqtsb" path="res://nearhousearea.gd" id="2_fmywm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmywm"]
+size = Vector3(24.3359, 18.873, 24.5918)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oavle"]
+size = Vector3(50, 50, 30)
+
+[node name="House" instance=ExtResource("1_k1gti")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979385, 8.93652, 3.36816)
+shape = SubResource("BoxShape3D_fmywm")
+
+[node name="Area3D" type="Area3D" parent="." index="2" groups=["home"]]
+script = ExtResource("2_fmywm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(0.925, 0, 0, 0, 1, 0, 0, 0, 1.355, 1.22643, -1.31934, 10.0207)
+shape = SubResource("BoxShape3D_oavle")

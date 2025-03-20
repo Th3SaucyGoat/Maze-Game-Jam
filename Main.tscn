@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://csowscdu188jd" path="res://Node3D/Heightmap_1_-1.res" id="26_8h1yq"]
 [ext_resource type="Script" uid="uid://c1ekvr8a42r23" path="res://message_label.gd" id="26_xrxkg"]
 [ext_resource type="Texture2D" uid="uid://bv06gt2kn1bbx" path="res://Node3D/Splatmap_1_-1_0.res" id="27_fykug"]
-[ext_resource type="PackedScene" uid="uid://b5m6gc1nvawye" path="res://House.tscn" id="27_sqvbp"]
+[ext_resource type="PackedScene" uid="uid://7tfeq885k6c2" path="res://Assets/House.tscn" id="27_sqvbp"]
 [ext_resource type="PackedScene" uid="uid://dyf233xr8d7mj" path="res://Deer.tscn" id="28_hri7i"]
 [ext_resource type="Texture2D" uid="uid://chd8j2kq1kq3o" path="res://Node3D/Foliage_-1_-1_0.res" id="28_wrbn1"]
 [ext_resource type="Texture2D" uid="uid://2m71ygfmhfhc" path="res://Node3D/Heightmap_-1_-1.res" id="29_cfjnh"]
@@ -273,7 +273,7 @@ metadata/_custom_type_script = "uid://i5jcj7ukvoen"
 metadata/_edit_lock_ = false
 
 [node name="Player" parent="." instance=ExtResource("2_uu6xs")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.694, 5, 37.698)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.76956, 0, 27.273)
 
 [node name="MazeParent" parent="." instance=ExtResource("20_xrxkg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.0004, 0, -99.2156)
@@ -438,7 +438,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.25335, 0, 160)
 script = ExtResource("59_oaklg")
 
 [node name="House" parent="." instance=ExtResource("27_sqvbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83953, 0, -23.5567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82536, 0.134308, -23.7407)
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("59_ek63v")
@@ -449,6 +449,13 @@ offset_top = 590.0
 offset_right = 143.0
 offset_bottom = 613.0
 script = ExtResource("26_xrxkg")
+
+[node name="Objective" type="Label" parent="UI"]
+offset_left = 19.0
+offset_top = 12.0
+offset_right = 364.0
+offset_bottom = 69.0
+text = "Objective: Find Your House"
 
 [node name="Background" type="Sprite2D" parent="UI"]
 visible = false
@@ -477,12 +484,5 @@ text = "BAD END"
 label_settings = SubResource("LabelSettings_4bst2")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Objective" type="Label" parent="UI"]
-offset_left = 19.0
-offset_top = 12.0
-offset_right = 364.0
-offset_bottom = 69.0
-text = "Objective: Find Your House"
 
 [node name="MainMenu" type="Node2D" parent="UI"]

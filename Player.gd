@@ -6,7 +6,7 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 @onready var camera = $Head/Camera
 #@onready var flashLight = $Head/FlashLight
 
-@onready var cottage = get_node("../cottage_fbx")
+@onready var cottage = get_node("../House")
 
 @onready var ui = get_node("../UI")
 
