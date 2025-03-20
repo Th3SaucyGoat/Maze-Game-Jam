@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ben4mrfa3q4gc"]
+[gd_scene load_steps=44 format=3 uid="uid://ben4mrfa3q4gc"]
 
 [ext_resource type="Texture2D" uid="uid://ckdeppfdu4gv" path="res://Assets/NightSkyHDRI008_4K-HDR.exr" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bylhy7qivqr1l" path="res://Assets/Player.tscn" id="2_uu6xs"]
@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://cbfx0ncleqmlm" path="res://resource.tscn" id="24_hhcpw"]
 [ext_resource type="Script" uid="uid://f6l50gukcub6" path="res://message_board.gd" id="25_mxvw5"]
 [ext_resource type="Script" uid="uid://c1ekvr8a42r23" path="res://message_label.gd" id="26_xrxkg"]
+[ext_resource type="PackedScene" uid="uid://b5m6gc1nvawye" path="res://House.tscn" id="27_sqvbp"]
+[ext_resource type="PackedScene" uid="uid://dyf233xr8d7mj" path="res://Deer.tscn" id="28_hri7i"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uu6xs"]
 panorama = ExtResource("1_glv2v")
@@ -296,3 +298,9 @@ offset_top = 590.0
 offset_right = 143.0
 offset_bottom = 613.0
 script = ExtResource("26_xrxkg")
+
+[node name="cottage_fbx" parent="." instance=ExtResource("27_sqvbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -8)
+
+[node name="Deer" parent="." instance=ExtResource("28_hri7i")]
+transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 3, -15, 0, 6)

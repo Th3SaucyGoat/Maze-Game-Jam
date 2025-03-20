@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5m6gc1nvawye"]
+
+[ext_resource type="PackedScene" uid="uid://cx1flc7y666fe" path="res://Assets/33-cottage_blender/cottage_fbx.fbx" id="1_xm50o"]
+
+[node name="cottage_fbx" instance=ExtResource("1_xm50o")]
+
+[node name="Lamp" parent="." index="1"]
+visible = false
+
+[node name="Camera" parent="." index="2"]
+visible = false

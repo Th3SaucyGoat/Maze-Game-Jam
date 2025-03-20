@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyf233xr8d7mj"]
+
+[ext_resource type="PackedScene" uid="uid://cpbprk134kjpx" path="res://Assets/Deer/Deer.glb" id="1_c3wsx"]
+
+[node name="Deer" instance=ExtResource("1_c3wsx")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
