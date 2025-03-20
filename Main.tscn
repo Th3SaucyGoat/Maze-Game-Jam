@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=87 format=3 uid="uid://ben4mrfa3q4gc"]
-=======
-[gd_scene load_steps=84 format=3 uid="uid://ben4mrfa3q4gc"]
->>>>>>> Stashed changes
+[gd_scene load_steps=89 format=3 uid="uid://c6ljcggp52yox"]
 
 [ext_resource type="Texture2D" uid="uid://ckdeppfdu4gv" path="res://Assets/NightSkyHDRI008_4K-HDR.exr" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bylhy7qivqr1l" path="res://Assets/Player.tscn" id="2_uu6xs"]
@@ -36,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://csowscdu188jd" path="res://Node3D/Heightmap_1_-1.res" id="26_8h1yq"]
 [ext_resource type="Script" uid="uid://c1ekvr8a42r23" path="res://message_label.gd" id="26_xrxkg"]
 [ext_resource type="Texture2D" uid="uid://bv06gt2kn1bbx" path="res://Node3D/Splatmap_1_-1_0.res" id="27_fykug"]
-[ext_resource type="PackedScene" uid="uid://b5m6gc1nvawye" path="res://House.tscn" id="27_sqvbp"]
+[ext_resource type="PackedScene" uid="uid://c5jin66wcue6" path="res://Assets/House.tscn" id="27_sqvbp"]
 [ext_resource type="PackedScene" uid="uid://dyf233xr8d7mj" path="res://Deer.tscn" id="28_hri7i"]
 [ext_resource type="Texture2D" uid="uid://chd8j2kq1kq3o" path="res://Node3D/Foliage_-1_-1_0.res" id="28_wrbn1"]
 [ext_resource type="Texture2D" uid="uid://2m71ygfmhfhc" path="res://Node3D/Heightmap_-1_-1.res" id="29_cfjnh"]
@@ -62,12 +58,9 @@
 [ext_resource type="Texture2D" uid="uid://d2k3rykjrahmx" path="res://Node3D/Foliage_1_-2_0.res" id="49_sef48"]
 [ext_resource type="Texture2D" uid="uid://c0cdqk1ptt8t3" path="res://Node3D/Heightmap_1_-2.res" id="50_rvpn4"]
 [ext_resource type="Texture2D" uid="uid://daekgv7qr4ylp" path="res://Node3D/Splatmap_1_-2_0.res" id="51_2gl7k"]
-<<<<<<< Updated upstream
 [ext_resource type="Script" uid="uid://dhd0rsj3e6dir" path="res://ui.gd" id="59_ek63v"]
-=======
 [ext_resource type="Script" uid="uid://boebvqj62fonk" path="res://game_manager.gd" id="59_oaklg"]
 [ext_resource type="PackedScene" uid="uid://b4ypifvablfv1" path="res://Assets/Fence/fence.tscn" id="60_oaklg"]
->>>>>>> Stashed changes
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uu6xs"]
 panorama = ExtResource("1_glv2v")
@@ -281,7 +274,7 @@ metadata/_custom_type_script = "uid://i5jcj7ukvoen"
 metadata/_edit_lock_ = false
 
 [node name="Player" parent="." instance=ExtResource("2_uu6xs")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.8714, 0, -28.2626)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.8714, 0, -4.2616)
 
 [node name="MazeParent" parent="." instance=ExtResource("20_xrxkg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.0004, 0, -99.2156)
@@ -302,7 +295,6 @@ script = ExtResource("26_xrxkg")
 [node name="Deer" parent="." instance=ExtResource("28_hri7i")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.31679, 0, 106.983)
 
-<<<<<<< Updated upstream
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("59_ek63v")
 
@@ -330,7 +322,7 @@ text = "BAD END"
 label_settings = SubResource("LabelSettings_4bst2")
 horizontal_alignment = 1
 vertical_alignment = 1
-=======
+
 [node name="FenceArea" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2047, 0, 0)
 
@@ -485,5 +477,4 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.25335, 0, 160)
 script = ExtResource("59_oaklg")
 
 [node name="House" parent="." instance=ExtResource("27_sqvbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5951, -20)
->>>>>>> Stashed changes
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.55637, -0.121281, -24.4978)

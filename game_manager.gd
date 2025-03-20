@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var house = preload("res://House.tscn")
+#@onready var house = preload("res://House.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
