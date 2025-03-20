@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ben4mrfa3q4gc"]
+[gd_scene load_steps=41 format=3 uid="uid://ben4mrfa3q4gc"]
 
 [ext_resource type="Texture2D" uid="uid://ckdeppfdu4gv" path="res://Assets/NightSkyHDRI008_4K-HDR.exr" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bylhy7qivqr1l" path="res://Assets/Player.tscn" id="2_uu6xs"]
@@ -20,9 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c4mxl4iindq1x" path="res://Node3D/Foliage_0_0_0.res" id="15_5tuhn"]
 [ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="15_sqvbp"]
 [ext_resource type="PackedScene" uid="uid://bqu85nkg82ubc" path="res://Bush.tscn" id="20_2gh4u"]
-[ext_resource type="PackedScene" uid="uid://clnjoxsu1dfdi" path="res://maze_section_identifier.tscn" id="20_bg4s2"]
-[ext_resource type="Script" uid="uid://3tuy8uo4fecx" path="res://maze_parent.gd" id="20_hhcpw"]
-[ext_resource type="Material" uid="uid://c27ku11h04jtv" path="res://GreenMat.tres" id="23_mxvw5"]
+[ext_resource type="PackedScene" uid="uid://dlbiplemc502w" path="res://MazeParent.tscn" id="20_xrxkg"]
 [ext_resource type="PackedScene" uid="uid://cbfx0ncleqmlm" path="res://resource.tscn" id="24_hhcpw"]
 [ext_resource type="Script" uid="uid://f6l50gukcub6" path="res://message_board.gd" id="25_mxvw5"]
 [ext_resource type="Script" uid="uid://c1ekvr8a42r23" path="res://message_label.gd" id="26_xrxkg"]
@@ -125,8 +123,6 @@ ObjectsTexture = []
 script = ExtResource("15_sqvbp")
 Zones = [SubResource("Resource_2gh4u")]
 
-[sub_resource type="SphereMesh" id="SphereMesh_2gh4u"]
-
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -158,127 +154,8 @@ TerrainZones = SubResource("Resource_devvj")
 metadata/_custom_type_script = "uid://i5jcj7ukvoen"
 metadata/_edit_lock_ = false
 
-[node name="MazeParent" type="Node3D" parent="."]
+[node name="MazeParent" parent="." instance=ExtResource("20_xrxkg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2931, 0, -43.3674)
-script = ExtResource("20_hhcpw")
-
-[node name="MazeIdentifier" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 0)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41048" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 7.5)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41049" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 15)
-mesh = SubResource("SphereMesh_2gh4u")
-surface_material_override/0 = ExtResource("23_mxvw5")
-IsBush = true
-
-[node name="@MeshInstance3D@41050" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 22.5)
-mesh = SubResource("SphereMesh_2gh4u")
-surface_material_override/0 = ExtResource("23_mxvw5")
-IsBush = true
-
-[node name="@MeshInstance3D@41051" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, 30)
-mesh = SubResource("SphereMesh_2gh4u")
-surface_material_override/0 = ExtResource("23_mxvw5")
-IsBush = true
-
-[node name="@MeshInstance3D@41052" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.3, 0)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41053" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.3, 7.5)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41054" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.3, 15)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41055" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.3, 22.5)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41056" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.3, 30)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41057" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3.3, 0)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41058" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3.3, 7.5)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41059" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3.3, 15)
-mesh = SubResource("SphereMesh_2gh4u")
-surface_material_override/0 = ExtResource("23_mxvw5")
-IsBush = true
-
-[node name="@MeshInstance3D@41060" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3.3, 22.5)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41061" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 3.3, 30)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41062" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 3.3, 0)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41063" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 3.3, 7.5)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41064" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 3.3, 15)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41065" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 3.3, 22.5)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41066" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 3.3, 30)
-mesh = SubResource("SphereMesh_2gh4u")
-
-[node name="@MeshInstance3D@41067" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.3, 0)
-mesh = SubResource("SphereMesh_2gh4u")
-surface_material_override/0 = ExtResource("23_mxvw5")
-IsBush = true
-
-[node name="@MeshInstance3D@41068" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.3, 7.5)
-mesh = SubResource("SphereMesh_2gh4u")
-surface_material_override/0 = ExtResource("23_mxvw5")
-IsBush = true
-
-[node name="@MeshInstance3D@41069" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.3, 15)
-mesh = SubResource("SphereMesh_2gh4u")
-surface_material_override/0 = ExtResource("23_mxvw5")
-IsBush = true
-
-[node name="@MeshInstance3D@41070" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.3, 22.5)
-mesh = SubResource("SphereMesh_2gh4u")
-surface_material_override/0 = ExtResource("23_mxvw5")
-IsBush = true
-
-[node name="@MeshInstance3D@41071" parent="MazeParent" instance=ExtResource("20_bg4s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 3.3, 30)
-mesh = SubResource("SphereMesh_2gh4u")
-surface_material_override/0 = ExtResource("23_mxvw5")
-IsBush = true
 
 [node name="Bush2" parent="." instance=ExtResource("20_2gh4u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77421, 3.3, 9.96883)

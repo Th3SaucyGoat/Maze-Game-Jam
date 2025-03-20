@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://clnjoxsu1dfdi"]
+[gd_scene load_steps=3 format=3 uid="uid://clnjoxsu1dfdi"]
 
 [ext_resource type="Script" uid="uid://ctpcpap2ulsbj" path="res://maze_section_identifier.gd" id="1_rc1du"]
-[ext_resource type="PackedScene" uid="uid://bqu85nkg82ubc" path="res://Bush.tscn" id="2_c3eme"]
-[ext_resource type="Material" uid="uid://c27ku11h04jtv" path="res://GreenMat.tres" id="3_roae3"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_2gh4u"]
 
 [node name="MazeIdentifier" type="MeshInstance3D"]
 mesh = SubResource("SphereMesh_2gh4u")
 script = ExtResource("1_rc1du")
-BushScene = ExtResource("2_c3eme")
-greenMat = ExtResource("3_roae3")
