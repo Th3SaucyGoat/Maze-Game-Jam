@@ -6,6 +6,8 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 @onready var camera = $Head/Camera
 #@onready var flashLight = $Head/FlashLight
 
+@onready var cottage = get_node("../cottage_fbx")
+
 @onready var messageBoard = get_node("../MessageBoard")
 @onready var ui = get_node("../UI")
 
@@ -22,6 +24,7 @@ var inventory = {
 	ResourceType.NAILS: 0,
 	ResourceType.HAMMER: 0,
 }
+var state = PlayerState.CONTROLLABLE
 
 enum PlayerState {
 	CONTROLLABLE,
@@ -34,6 +37,9 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:
+	if state != PlayerState.CONTROLLABLE:
+		return
+	
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x *LOOK_SENSITIVITY)
 		camera.rotate_x(-event.relative.y*LOOK_SENSITIVITY)
@@ -43,10 +49,28 @@ func _unhandled_input(event: InputEvent) -> void:
 		#flashLight.visible = false if flashLight.visible  else true
 
 func _physics_process(delta: float) -> void:
+	match state:
+		PlayerState.CONTROLLABLE:
+			movement(delta)
+		PlayerState.VICTORY_CUTSCENE:
+			victory_camera_pan(delta)
+
+func _process(delta: float) -> void:
+	interaction()
+
+func _on_area_entered(body: Node3D, area: Area3D):
+	if area.is_in_group("interaction_areas"):
+		currentInteractable = area
+	
+func _on_area_exited(body: Node3D, area: Area3D):
+	if area == currentInteractable:
+		currentInteractable = null
+
+func movement(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() *2* delta
-
+		
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -63,17 +87,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, currentSpeed)
 
 	move_and_slide()
-
-func _process(delta: float) -> void:
-	interaction()
-
-func _on_area_entered(body: Node3D, area: Area3D):
-	if area.is_in_group("interaction_areas"):
-		currentInteractable = area
 	
-func _on_area_exited(body: Node3D, area: Area3D):
-	if area == currentInteractable:
-		currentInteractable = null
 
 func interaction() -> void:
 	if currentInteractable == null:
@@ -96,10 +110,31 @@ func interaction() -> void:
 			var count = inventory[resourceType]
 			var message = "Gathered %s. Now have %d" % [resourceName, count]
 			messageBoard.push_notification(message)
+			victory_cutscene()
 		else:
 			print("Found a \"%s\" (dunno wtf this is)" % resourceName)
 			
 		currentInteractable.disable()
 
+var victory_camera_position
+func victory_camera_pan(delta: float):
+	var temp: Vector3 = victory_camera_position - cottage.transform.origin
+	temp = temp.rotated(Vector3.UP, -0.1 * delta)
+	temp += cottage.transform.origin
+	victory_camera_position = temp
+	camera.look_at_from_position(
+		victory_camera_position, 
+		cottage.transform.origin, Vector3.UP
+		)
+
 func jumpscare_cutscene(deer: Node3D):
+	state = PlayerState.JUMPSCARE_CUTSCENE
 	ui.defeat_screen()
+
+func victory_cutscene():
+	state = PlayerState.VICTORY_CUTSCENE
+	ui.victory_screen()
+	
+	victory_camera_position = cottage.transform.origin 
+	victory_camera_position += 20.0 * Vector3.UP 
+	victory_camera_position += 40.0 * Vector3.BACK

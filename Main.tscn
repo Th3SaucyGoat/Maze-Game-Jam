@@ -300,8 +300,8 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.31679, 0, 106.983)
 script = ExtResource("59_ek63v")
 
 [node name="Background" type="Sprite2D" parent="UI"]
-position = Vector2(575.75, 322.25)
-scale = Vector2(50, 645.5)
+position = Vector2(575.75, 322.5)
+scale = Vector2(50, 897)
 texture = SubResource("GradientTexture1D_ek63v")
 
 [node name="Victory" type="Label" parent="UI"]
