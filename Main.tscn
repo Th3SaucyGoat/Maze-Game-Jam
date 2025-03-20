@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=87 format=3 uid="uid://ben4mrfa3q4gc"]
+=======
+[gd_scene load_steps=84 format=3 uid="uid://ben4mrfa3q4gc"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://ckdeppfdu4gv" path="res://Assets/NightSkyHDRI008_4K-HDR.exr" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bylhy7qivqr1l" path="res://Assets/Player.tscn" id="2_uu6xs"]
@@ -58,7 +62,12 @@
 [ext_resource type="Texture2D" uid="uid://d2k3rykjrahmx" path="res://Node3D/Foliage_1_-2_0.res" id="49_sef48"]
 [ext_resource type="Texture2D" uid="uid://c0cdqk1ptt8t3" path="res://Node3D/Heightmap_1_-2.res" id="50_rvpn4"]
 [ext_resource type="Texture2D" uid="uid://daekgv7qr4ylp" path="res://Node3D/Splatmap_1_-2_0.res" id="51_2gl7k"]
+<<<<<<< Updated upstream
 [ext_resource type="Script" uid="uid://dhd0rsj3e6dir" path="res://ui.gd" id="59_ek63v"]
+=======
+[ext_resource type="Script" uid="uid://boebvqj62fonk" path="res://game_manager.gd" id="59_oaklg"]
+[ext_resource type="PackedScene" uid="uid://b4ypifvablfv1" path="res://Assets/Fence/fence.tscn" id="60_oaklg"]
+>>>>>>> Stashed changes
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uu6xs"]
 panorama = ExtResource("1_glv2v")
@@ -259,9 +268,6 @@ font_color = Color(0.56, 0.1232, 0.13048, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rxg2q")
 
-[node name="Player" parent="." instance=ExtResource("2_uu6xs")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 30.9072, 4.94127, 0)
-
 [node name="TerraBrush" type="Node3D" parent="."]
 transform = Transform3D(0.621961, 0, 0, 0, 0.621961, 0, 0, 0, 0.621961, 0, 0, 0)
 script = ExtResource("3_j4qnp")
@@ -273,6 +279,9 @@ Objects = []
 TerrainZones = SubResource("Resource_cxcit")
 metadata/_custom_type_script = "uid://i5jcj7ukvoen"
 metadata/_edit_lock_ = false
+
+[node name="Player" parent="." instance=ExtResource("2_uu6xs")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.8714, 0, -28.2626)
 
 [node name="MazeParent" parent="." instance=ExtResource("20_xrxkg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.0004, 0, -99.2156)
@@ -290,12 +299,10 @@ offset_right = 143.0
 offset_bottom = 613.0
 script = ExtResource("26_xrxkg")
 
-[node name="cottage_fbx" parent="." instance=ExtResource("27_sqvbp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90816, 0, -23.3473)
-
 [node name="Deer" parent="." instance=ExtResource("28_hri7i")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.31679, 0, 106.983)
 
+<<<<<<< Updated upstream
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("59_ek63v")
 
@@ -323,3 +330,160 @@ text = "BAD END"
 label_settings = SubResource("LabelSettings_4bst2")
 horizontal_alignment = 1
 vertical_alignment = 1
+=======
+[node name="FenceArea" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2047, 0, 0)
+
+[node name="Fence" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 91.6578, 0, 160)
+
+[node name="Fence2" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 70.342, 0, 160)
+
+[node name="Fence3" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 49.0117, 0, 160)
+
+[node name="Fence4" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 27.6824, 0, 160)
+
+[node name="Fence5" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.51468, 0, 160)
+
+[node name="Fence6" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -14.6014, 0, 160)
+
+[node name="Fence7" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -35.9172, 0, 160)
+
+[node name="Fence8" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -57.2475, 0, 160)
+
+[node name="Fence9" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -78.5768, 0, 160)
+
+[node name="Fence10" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -99.7445, 0, 160)
+
+[node name="Fence21" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(4.16954, 0, 0, 0, 3, 0, 0, 0, 3, -126.928, 0, 160)
+
+[node name="Fence11" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 99.4295, 0, -110.211)
+
+[node name="Fence12" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 83.4471, 0, -115.459)
+
+[node name="Fence13" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 62.1169, 0, -115.459)
+
+[node name="Fence14" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 40.7875, 0, -115.459)
+
+[node name="Fence15" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 19.6198, 0, -115.459)
+
+[node name="Fence16" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.49626, 0, -115.459)
+
+[node name="Fence17" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -22.812, 0, -115.459)
+
+[node name="Fence18" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -44.1423, 0, -115.459)
+
+[node name="Fence19" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -65.4717, 0, -115.459)
+
+[node name="Fence20" parent="FenceArea" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -86.6394, 0, -115.459)
+
+[node name="Node3D" type="Node3D" parent="FenceArea"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -292.534, 0, -52.1887)
+
+[node name="Fence11" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -120.519, 0, 160)
+
+[node name="Fence12" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -141.834, 0, 160)
+
+[node name="Fence13" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -163.165, 0, 160)
+
+[node name="Fence14" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -184.494, 0, 160)
+
+[node name="Fence15" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3.38515, 0, 0, 0, 3, 0, 0, 0, 3, -205.662, 0, 160)
+
+[node name="Fence16" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -14.2472, 0, 160)
+
+[node name="Fence17" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -35.563, 0, 160)
+
+[node name="Fence18" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -56.8933, 0, 160)
+
+[node name="Fence19" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -78.2227, 0, 160)
+
+[node name="Fence20" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -99.3904, 0, 160)
+
+[node name="Fence21" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(-1.32027e-07, 0, 3.02042, 0, 3.02042, 0, -3.02042, 0, -1.32027e-07, 63.3817, 0, 195.511)
+
+[node name="Fence22" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 63.0894, 0, 174.378)
+
+[node name="Fence27" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.99347, 0, 392.155)
+
+[node name="Fence28" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -14.3368, 0, 392.155)
+
+[node name="Fence29" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -35.6662, 0, 392.155)
+
+[node name="Fence30" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -56.8339, 0, 392.155)
+
+[node name="Fence32" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -77.3809, 0, 392.155)
+
+[node name="Fence33" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -98.7112, 0, 392.155)
+
+[node name="Fence34" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -120.04, 0, 392.155)
+
+[node name="Fence35" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -141.208, 0, 392.155)
+
+[node name="Fence36" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -162.532, 0, 392.155)
+
+[node name="Fence37" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -183.863, 0, 392.155)
+
+[node name="Fence38" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -205.192, 0, 392.155)
+
+[node name="Fence31" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 28.3962, 0, 392.155)
+
+[node name="Fence23" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 47.9021, 0.332125, 159.177)
+
+[node name="Fence24" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 26.421, 0, 160)
+
+[node name="Fence25" parent="FenceArea/Node3D" instance=ExtResource("60_oaklg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.25335, 0, 160)
+
+[node name="GameManager" type="Node3D" parent="."]
+script = ExtResource("59_oaklg")
+
+[node name="House" parent="." instance=ExtResource("27_sqvbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5951, -20)
+>>>>>>> Stashed changes
