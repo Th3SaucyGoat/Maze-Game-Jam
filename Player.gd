@@ -8,7 +8,6 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 
 @onready var cottage = get_node("../cottage_fbx")
 
-@onready var messageBoard = get_node("../MessageBoard")
 @onready var ui = get_node("../UI")
 
 var currentSpeed
@@ -24,12 +23,20 @@ var inventory = {
 	ResourceType.NAILS: 0,
 	ResourceType.HAMMER: 0,
 }
+
 var state = PlayerState.CONTROLLABLE
+var objective_stage = ObjectiveStage.FIND_HOUSE
 
 enum PlayerState {
 	CONTROLLABLE,
 	JUMPSCARE_CUTSCENE,
 	VICTORY_CUTSCENE,
+}
+
+enum ObjectiveStage {
+	FIND_HOUSE,
+	COLLECT_RESOURCES,
+	RETURN_HOME,
 }
 
 func _ready():
@@ -61,6 +68,12 @@ func _process(delta: float) -> void:
 func _on_area_entered(body: Node3D, area: Area3D):
 	if area.is_in_group("interaction_areas"):
 		currentInteractable = area
+		return
+		
+	if objective_stage == ObjectiveStage.FIND_HOUSE:
+		if area.is_in_group("home"):
+			objective_stage = ObjectiveStage.COLLECT_RESOURCES
+			ui.set_objective("Collect barrier materials (X remain)")
 	
 func _on_area_exited(body: Node3D, area: Area3D):
 	if area == currentInteractable:
@@ -109,7 +122,7 @@ func interaction() -> void:
 			inventory[resourceType] += 1
 			var count = inventory[resourceType]
 			var message = "Gathered %s. Now have %d" % [resourceName, count]
-			messageBoard.push_notification(message)
+			ui.push_notification(message)
 			victory_cutscene()
 		else:
 			print("Found a \"%s\" (dunno wtf this is)" % resourceName)

@@ -30,8 +30,20 @@ func _process(delta: float) -> void:
 
 func defeat_screen() -> void:
 	var timer = TOTAL_TIME
+	background.visible = true
+	defeatText.visible = true
 	defeat = true
 
 func victory_screen() -> void:
 	var timer = TOTAL_TIME
+	background.visible = true
+	victoryText.visible = true
 	victory = true
+
+@onready var objectiveText = $Objective
+func set_objective(message: String) -> void:
+	objectiveText.text = "Objective: %s" % message
+
+@onready var notification = $Notification
+func push_notification(message: String) -> void:
+	notification.set_message(message)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://ben4mrfa3q4gc"]
+[gd_scene load_steps=86 format=3 uid="uid://ben4mrfa3q4gc"]
 
 [ext_resource type="Texture2D" uid="uid://ckdeppfdu4gv" path="res://Assets/NightSkyHDRI008_4K-HDR.exr" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bylhy7qivqr1l" path="res://Assets/Player.tscn" id="2_uu6xs"]
@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://cbfx0ncleqmlm" path="res://resource.tscn" id="24_hhcpw"]
 [ext_resource type="Texture2D" uid="uid://dentwh68se1ms" path="res://Node3D/Splatmap_0_-1_0.res" id="24_yf3a2"]
 [ext_resource type="Texture2D" uid="uid://cogtqbisi785j" path="res://Node3D/Foliage_1_-1_0.res" id="25_gdb40"]
-[ext_resource type="Script" uid="uid://f6l50gukcub6" path="res://message_board.gd" id="25_mxvw5"]
 [ext_resource type="Texture2D" uid="uid://csowscdu188jd" path="res://Node3D/Heightmap_1_-1.res" id="26_8h1yq"]
 [ext_resource type="Script" uid="uid://c1ekvr8a42r23" path="res://message_label.gd" id="26_xrxkg"]
 [ext_resource type="Texture2D" uid="uid://bv06gt2kn1bbx" path="res://Node3D/Splatmap_1_-1_0.res" id="27_fykug"]
@@ -260,7 +259,7 @@ font_color = Color(0.56, 0.1232, 0.13048, 1)
 environment = SubResource("Environment_rxg2q")
 
 [node name="Player" parent="." instance=ExtResource("2_uu6xs")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 30.9072, 4.94127, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.50184, 4.94127, 37.4569)
 
 [node name="TerraBrush" type="Node3D" parent="."]
 transform = Transform3D(0.621961, 0, 0, 0, 0.621961, 0, 0, 0, 0.621961, 0, 0, 0)
@@ -280,16 +279,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.0004, 0, -99.2156)
 [node name="WoodResource" parent="." instance=ExtResource("24_hhcpw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8676, 0, 19.724)
 
-[node name="MessageBoard" type="CanvasLayer" parent="."]
-script = ExtResource("25_mxvw5")
-
-[node name="Notification0" type="Label" parent="MessageBoard"]
-offset_left = 39.0
-offset_top = 590.0
-offset_right = 143.0
-offset_bottom = 613.0
-script = ExtResource("26_xrxkg")
-
 [node name="cottage_fbx" parent="." instance=ExtResource("27_sqvbp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90816, 0, -23.3473)
 
@@ -299,12 +288,21 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.31679, 0, 106.983)
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("59_ek63v")
 
+[node name="Notification" type="Label" parent="UI"]
+offset_left = 39.0
+offset_top = 590.0
+offset_right = 143.0
+offset_bottom = 613.0
+script = ExtResource("26_xrxkg")
+
 [node name="Background" type="Sprite2D" parent="UI"]
+visible = false
 position = Vector2(575.75, 322.5)
 scale = Vector2(50, 897)
 texture = SubResource("GradientTexture1D_ek63v")
 
 [node name="Victory" type="Label" parent="UI"]
+visible = false
 offset_left = 275.0
 offset_top = 124.0
 offset_right = 877.0
@@ -315,6 +313,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Defeat" type="Label" parent="UI"]
+visible = false
 offset_left = 82.0
 offset_top = 124.0
 offset_right = 1074.0
@@ -323,3 +322,12 @@ text = "BAD END"
 label_settings = SubResource("LabelSettings_4bst2")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Objective" type="Label" parent="UI"]
+offset_left = 19.0
+offset_top = 12.0
+offset_right = 364.0
+offset_bottom = 69.0
+text = "Objective: Find Your House"
+
+[node name="MainMenu" type="Node2D" parent="UI"]
