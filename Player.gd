@@ -7,6 +7,7 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 #@onready var flashLight = $Head/FlashLight
 
 @onready var messageBoard = get_node("../MessageBoard")
+@onready var ui = get_node("../UI")
 
 var currentSpeed
 
@@ -101,4 +102,4 @@ func interaction() -> void:
 		currentInteractable.disable()
 
 func jumpscare_cutscene(deer: Node3D):
-	print("JUMPSCARE")
+	ui.defeat_screen()

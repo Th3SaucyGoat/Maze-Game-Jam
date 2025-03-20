@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://ben4mrfa3q4gc"]
+[gd_scene load_steps=87 format=3 uid="uid://ben4mrfa3q4gc"]
 
 [ext_resource type="Texture2D" uid="uid://ckdeppfdu4gv" path="res://Assets/NightSkyHDRI008_4K-HDR.exr" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bylhy7qivqr1l" path="res://Assets/Player.tscn" id="2_uu6xs"]
@@ -19,8 +19,6 @@
 [ext_resource type="Script" uid="uid://d2qebwt0ednya" path="res://addons/terrabrush/Scripts/EditorResources/ZoneResource.cs" id="14_xrxkg"]
 [ext_resource type="Texture2D" uid="uid://c4mxl4iindq1x" path="res://Node3D/Foliage_0_0_0.res" id="15_5tuhn"]
 [ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="15_sqvbp"]
-[ext_resource type="PackedScene" uid="uid://bqu85nkg82ubc" path="res://Bush.tscn" id="20_2gh4u"]
-[ext_resource type="PackedScene" path="res://MazeParent.tscn" id="20_xrxkg"]
 [ext_resource type="Texture2D" uid="uid://c6o5i25nule8e" path="res://Node3D/Foliage_1_0_0.res" id="19_ac6pf"]
 [ext_resource type="Texture2D" uid="uid://bwcf76j46q86y" path="res://Node3D/Heightmap_1_0.res" id="20_ek63v"]
 [ext_resource type="PackedScene" uid="uid://dlbiplemc502w" path="res://MazeParent.tscn" id="20_xrxkg"]
@@ -60,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://d2k3rykjrahmx" path="res://Node3D/Foliage_1_-2_0.res" id="49_sef48"]
 [ext_resource type="Texture2D" uid="uid://c0cdqk1ptt8t3" path="res://Node3D/Heightmap_1_-2.res" id="50_rvpn4"]
 [ext_resource type="Texture2D" uid="uid://daekgv7qr4ylp" path="res://Node3D/Splatmap_1_-2_0.res" id="51_2gl7k"]
+[ext_resource type="Script" uid="uid://dhd0rsj3e6dir" path="res://ui.gd" id="59_ek63v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uu6xs"]
 panorama = ExtResource("1_glv2v")
@@ -241,6 +240,20 @@ ObjectsTexture = []
 script = ExtResource("15_sqvbp")
 Zones = [SubResource("Resource_bf5p3"), SubResource("Resource_ady3b"), SubResource("Resource_aoqpd"), SubResource("Resource_m6lip"), SubResource("Resource_uy73y"), SubResource("Resource_slndv"), SubResource("Resource_8dw04"), SubResource("Resource_tjmm3"), SubResource("Resource_deygs"), SubResource("Resource_6ievk"), SubResource("Resource_rg2x5"), SubResource("Resource_5cpvc")]
 
+[sub_resource type="Gradient" id="Gradient_ac6pf"]
+colors = PackedColorArray(0, 0, 0, 1, 0.0119, 0.0157733, 0.07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ek63v"]
+gradient = SubResource("Gradient_ac6pf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_oaklg"]
+font_size = 241
+font_color = Color(0.304, 0.535467, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4bst2"]
+font_size = 226
+font_color = Color(0.56, 0.1232, 0.13048, 1)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -282,3 +295,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90816, 0, -23.3473)
 
 [node name="Deer" parent="." instance=ExtResource("28_hri7i")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.31679, 0, 106.983)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("59_ek63v")
+
+[node name="Background" type="Sprite2D" parent="UI"]
+position = Vector2(575.75, 322.25)
+scale = Vector2(50, 645.5)
+texture = SubResource("GradientTexture1D_ek63v")
+
+[node name="Victory" type="Label" parent="UI"]
+offset_left = 275.0
+offset_top = 124.0
+offset_right = 877.0
+offset_bottom = 491.0
+text = "SAFE"
+label_settings = SubResource("LabelSettings_oaklg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Defeat" type="Label" parent="UI"]
+offset_left = 82.0
+offset_top = 124.0
+offset_right = 1074.0
+offset_bottom = 491.0
+text = "BAD END"
+label_settings = SubResource("LabelSettings_4bst2")
+horizontal_alignment = 1
+vertical_alignment = 1
