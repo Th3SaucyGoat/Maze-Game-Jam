@@ -6,8 +6,8 @@ func _ready() -> void:
 	add_to_group("interaction_areas")
 	
 	var player = get_tree().get_first_node_in_group("player")
-	connect("body_entered", player._on_area_entered.bind(self))
-	connect("body_exited", player._on_area_exited.bind(self))
+	connect("body_entered", player.on_area_entered.bind(self))
+	connect("body_exited", player.on_area_exited.bind(self))
 
 # Right now interactable type is the same as the resource type
 # Any new interactables may need to change this

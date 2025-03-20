@@ -40,7 +40,6 @@ enum ObjectiveStage {
 }
 
 func _ready():
-	add_to_group("player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -65,7 +64,11 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	interaction()
 
-func _on_area_entered(body: Node3D, area: Area3D):
+func on_area_entered(body: Node3D, area: Area3D):
+	
+	if body != self:
+		return
+	
 	if area.is_in_group("interaction_areas"):
 		currentInteractable = area
 		return
@@ -75,7 +78,7 @@ func _on_area_entered(body: Node3D, area: Area3D):
 			objective_stage = ObjectiveStage.COLLECT_RESOURCES
 			ui.set_objective("Collect barrier materials (X remain)")
 	
-func _on_area_exited(body: Node3D, area: Area3D):
+func on_area_exited(body: Node3D, area: Area3D):
 	if area == currentInteractable:
 		currentInteractable = null
 
