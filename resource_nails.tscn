@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7weqayro2e10"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_mivfi"]
+[ext_resource type="PackedScene" uid="uid://bdbdlyic2xng0" path="res://Assets/Nail.blend" id="1_8a1ja"]
 
 [node name="ResourceNails" type="Node3D"]
 
-[node name="Cube" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_mivfi")
-skeleton = NodePath("")
+[node name="Nail" parent="." instance=ExtResource("1_8a1ja")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.5, 0)
