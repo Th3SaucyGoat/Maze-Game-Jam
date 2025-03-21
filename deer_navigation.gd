@@ -54,8 +54,6 @@ func check_sightline():
 	
 func do_wandering(delta: float):
 	
-	print("wandering")
-	
 	if navagent.is_navigation_finished():
 		var wanderx = randf_range(-100.0, 100.0)
 		var wandery = transform.origin.y
