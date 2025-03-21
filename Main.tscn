@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://c6ljcggp52yox"]
+[gd_scene load_steps=132 format=3 uid="uid://c6ljcggp52yox"]
 
 [ext_resource type="Texture2D" uid="uid://ckdeppfdu4gv" path="res://Assets/NightSkyHDRI008_4K-HDR.exr" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bylhy7qivqr1l" path="res://Assets/Player.tscn" id="2_uu6xs"]
@@ -87,6 +87,18 @@
 [ext_resource type="Texture2D" uid="uid://bsoflvfwtjoc7" path="res://Node3D/Object_0_-2_0.res" id="71_hln0y"]
 [ext_resource type="Texture2D" path="res://Node3D/Foliage_1_-2_1.res" id="74_6nglk"]
 [ext_resource type="Texture2D" uid="uid://bsy5li0pneoh4" path="res://Node3D/Object_1_-2_0.res" id="76_dsf7v"]
+[ext_resource type="AudioStream" uid="uid://bboanmgkxra5h" path="res://Audio/AmbienceDrone.mp3" id="88_sef48"]
+[ext_resource type="Script" uid="uid://rx815kqqctg7" path="res://BackgroundNoises.gd" id="89_rvpn4"]
+[ext_resource type="AudioStream" uid="uid://0eh4w7871djs" path="res://Audio/BackgroundRandomSounds/Growl1.mp3" id="90_deygs"]
+[ext_resource type="AudioStream" uid="uid://cfpsb6objfmvl" path="res://Audio/BackgroundRandomSounds/Laught2.mp3" id="91_6ievk"]
+[ext_resource type="AudioStream" uid="uid://cak4wl105mn5y" path="res://Audio/BackgroundRandomSounds/Scream2.mp3" id="92_rg2x5"]
+[ext_resource type="AudioStream" uid="uid://ck8a2frtf7hsp" path="res://Audio/BackgroundRandomSounds/Scream4.mp3" id="93_5cpvc"]
+[ext_resource type="AudioStream" uid="uid://7fo25vi4il4u" path="res://Audio/BackgroundRandomSounds/WeirdAnimal1.mp3" id="94_cxcit"]
+[ext_resource type="AudioStream" uid="uid://ckj0q0agqexw3" path="res://Audio/BackgroundRandomSounds/Wind1.mp3" id="95_b1va2"]
+[ext_resource type="AudioStream" uid="uid://bhs2jh8krrh8i" path="res://Audio/BackgroundRandomSounds/WoodCrack2.mp3" id="96_8gn08"]
+[ext_resource type="AudioStream" uid="uid://byeofb4n2gd7h" path="res://Audio/BackgroundRandomSounds/WoodCrack1.mp3" id="97_llcqu"]
+[ext_resource type="AudioStream" uid="uid://hyekw5da501l" path="res://Audio/BackgroundRandomSounds/Laught1.mp3" id="98_al55t"]
+[ext_resource type="AudioStream" uid="uid://bkqfrn0n3idd4" path="res://Audio/BackgroundRandomSounds/Scream5.mp3" id="99_hln0y"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uu6xs"]
 panorama = ExtResource("1_glv2v")
@@ -720,3 +732,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.026, 0, 136.143)
 
 [node name="Tree16" parent="Trees" instance=ExtResource("62_uy3go")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234.026, 0, 246.143)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("88_sef48")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+script = ExtResource("89_rvpn4")
+randomNoises = [ExtResource("90_deygs"), ExtResource("91_6ievk"), ExtResource("92_rg2x5"), ExtResource("93_5cpvc"), ExtResource("94_cxcit"), ExtResource("95_b1va2"), ExtResource("96_8gn08"), ExtResource("97_llcqu"), ExtResource("98_al55t"), ExtResource("99_hln0y")]
+
+[node name="Timer" type="Timer" parent="AudioStreamPlayer"]
+
+[node name="Positions for random noises" type="Node3D" parent="AudioStreamPlayer"]
+
+[node name="Marker3D" type="Marker3D" parent="AudioStreamPlayer/Positions for random noises"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158.844, 0, 10.2404)
+
+[node name="Marker3D2" type="Marker3D" parent="AudioStreamPlayer/Positions for random noises"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158.844, 0, 96.4372)
+
+[node name="Marker3D3" type="Marker3D" parent="AudioStreamPlayer/Positions for random noises"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.1052, 0, 177.669)
+
+[node name="Marker3D4" type="Marker3D" parent="AudioStreamPlayer/Positions for random noises"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.5285, 0, 188.484)
+
+[node name="Marker3D5" type="Marker3D" parent="AudioStreamPlayer/Positions for random noises"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.681, 0, 103.055)
+
+[node name="Marker3D6" type="Marker3D" parent="AudioStreamPlayer/Positions for random noises"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.919, 1.52588e-05, -38.9128)
+
+[node name="Marker3D7" type="Marker3D" parent="AudioStreamPlayer/Positions for random noises"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.8624, 1.52588e-05, -171.081)
+
+[node name="Marker3D8" type="Marker3D" parent="AudioStreamPlayer/Positions for random noises"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.032, -1.52588e-05, -162.508)
+
+[node name="RandomNoise" type="AudioStreamPlayer3D" parent="AudioStreamPlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.6436, 0)
+volume_db = -2.0
+max_distance = 1000.0
