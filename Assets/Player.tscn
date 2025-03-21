@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bylhy7qivqr1l"]
+[gd_scene load_steps=11 format=3 uid="uid://bylhy7qivqr1l"]
 
 [ext_resource type="Script" uid="uid://dgguclyrf28kn" path="res://Player.gd" id="1_1fna3"]
 [ext_resource type="AudioStream" uid="uid://cm2xsmeyqdlpy" path="res://Audio/Footsteps/DirtFootstep3.mp3" id="2_ify7s"]
@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://8kwwgu6q8787" path="res://Audio/Footsteps/DirtFootstep2.mp3" id="5_wmw2k"]
 [ext_resource type="AudioStream" uid="uid://c0fmctcvjda44" path="res://Audio/Footsteps/DirtFootstep4.mp3" id="6_j0vyv"]
 [ext_resource type="Texture2D" uid="uid://8xfk4l3g5p8y" path="res://Assets/FlashLightTexture.jpg" id="7_j0vyv"]
+[ext_resource type="AudioStream" uid="uid://btj6fni145mj5" path="res://Audio/GrabSFX/NailsGrab1.mp3" id="7_jqnu1"]
+[ext_resource type="AudioStream" uid="uid://cgkt4n5vp503d" path="res://Audio/GrabSFX/HammerGrab1.mp3" id="7_umheq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r0du0"]
 
@@ -16,6 +18,8 @@ collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_1fna3")
 footstepClips = [ExtResource("2_ify7s"), ExtResource("3_ng366"), ExtResource("4_6vidr"), ExtResource("5_wmw2k"), ExtResource("6_j0vyv")]
+nailGrabSound = ExtResource("7_jqnu1")
+hammerGrabSound = ExtResource("7_umheq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

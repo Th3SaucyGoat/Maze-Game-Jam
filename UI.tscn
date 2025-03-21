@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjtriwfkdpgyb"]
+
+[ext_resource type="Script" uid="uid://dhd0rsj3e6dir" path="res://ui.gd" id="1_3b2b5"]
+[ext_resource type="Script" uid="uid://c1ekvr8a42r23" path="res://message_label.gd" id="2_g6l6n"]
+
+[sub_resource type="Gradient" id="Gradient_ac6pf"]
+colors = PackedColorArray(0, 0, 0, 1, 0.0119, 0.0157733, 0.07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ek63v"]
+gradient = SubResource("Gradient_ac6pf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_oaklg"]
+font_size = 241
+font_color = Color(0.304, 0.535467, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4bst2"]
+font_size = 226
+font_color = Color(0.56, 0.1232, 0.13048, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uy3go"]
+font_size = 22
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_3b2b5")
+
+[node name="Notification" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 590.0
+offset_right = 143.0
+offset_bottom = 613.0
+script = ExtResource("2_g6l6n")
+
+[node name="Objective" type="Label" parent="."]
+offset_left = 19.0
+offset_top = 12.0
+offset_right = 364.0
+offset_bottom = 69.0
+text = "Objective: Find Your House"
+
+[node name="ItemLabel" type="Label" parent="Objective"]
+offset_left = -2.0
+offset_top = 31.0
+offset_right = 254.0
+offset_bottom = 101.0
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(575.75, 322.5)
+scale = Vector2(50, 897)
+texture = SubResource("GradientTexture1D_ek63v")
+
+[node name="Victory" type="Label" parent="."]
+visible = false
+offset_left = 275.0
+offset_top = 124.0
+offset_right = 877.0
+offset_bottom = 491.0
+text = "SAFE"
+label_settings = SubResource("LabelSettings_oaklg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Defeat" type="Label" parent="."]
+visible = false
+offset_left = 82.0
+offset_top = 124.0
+offset_right = 1074.0
+offset_bottom = 491.0
+text = "BAD END"
+label_settings = SubResource("LabelSettings_4bst2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="Node2D" parent="."]
+visible = false
+
+[node name="IntroText" type="Label" parent="MainMenu"]
+offset_left = 7.55637
+offset_top = -0.121281
+offset_right = 649.556
+offset_bottom = 402.879
+rotation = 3.14159
+scale = Vector2(1e-05, -1)
+text = "You are pursued by a monster. 
+
+It will kill you if it reaches you. 
+
+Your only hope of safety is to gather materials from the area to build a barrier around your house. 
+
+You first need to find your house.
+
+PRESS [F] TO BEGIN"
+label_settings = SubResource("LabelSettings_uy3go")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

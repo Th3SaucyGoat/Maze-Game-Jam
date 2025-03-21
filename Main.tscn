@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://ben4mrfa3q4gc"]
+[gd_scene load_steps=127 format=3 uid="uid://ben4mrfa3q4gc"]
 
 [ext_resource type="Texture2D" uid="uid://ckdeppfdu4gv" path="res://Assets/NightSkyHDRI008_4K-HDR.exr" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bylhy7qivqr1l" path="res://Assets/Player.tscn" id="2_uu6xs"]
@@ -35,7 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://cogtqbisi785j" path="res://Node3D/Foliage_1_-1_0.res" id="25_gdb40"]
 [ext_resource type="Texture2D" uid="uid://dw3xip8x81dgy" path="res://Node3D/Object_1_0_0.res" id="26_2gl7k"]
 [ext_resource type="Texture2D" uid="uid://csowscdu188jd" path="res://Node3D/Heightmap_1_-1.res" id="26_8h1yq"]
-[ext_resource type="Script" uid="uid://c1ekvr8a42r23" path="res://message_label.gd" id="26_xrxkg"]
 [ext_resource type="Texture2D" uid="uid://bv06gt2kn1bbx" path="res://Node3D/Splatmap_1_-1_0.res" id="27_fykug"]
 [ext_resource type="PackedScene" uid="uid://7tfeq885k6c2" path="res://Assets/House.tscn" id="27_sqvbp"]
 [ext_resource type="PackedScene" uid="uid://dyf233xr8d7mj" path="res://Deer.tscn" id="28_hri7i"]
@@ -76,7 +75,6 @@
 [ext_resource type="Texture2D" path="res://Node3D/Foliage_1_1_1.res" id="54_rg2x5"]
 [ext_resource type="Texture2D" uid="uid://e2qu8omnx8s6" path="res://Node3D/Object_1_1_0.res" id="56_5cpvc"]
 [ext_resource type="Texture2D" path="res://Node3D/Foliage_-1_1_1.res" id="59_cxcit"]
-[ext_resource type="Script" uid="uid://dhd0rsj3e6dir" path="res://ui.gd" id="59_ek63v"]
 [ext_resource type="Script" uid="uid://boebvqj62fonk" path="res://game_manager.gd" id="59_oaklg"]
 [ext_resource type="PackedScene" uid="uid://b4ypifvablfv1" path="res://Assets/Fence/fence.tscn" id="60_oaklg"]
 [ext_resource type="Texture2D" uid="uid://biwqlqrbfxg0a" path="res://Node3D/Object_-1_1_0.res" id="61_b1va2"]
@@ -87,8 +85,9 @@
 [ext_resource type="Texture2D" uid="uid://bsoflvfwtjoc7" path="res://Node3D/Object_0_-2_0.res" id="71_hln0y"]
 [ext_resource type="Texture2D" path="res://Node3D/Foliage_1_-2_1.res" id="74_6nglk"]
 [ext_resource type="Texture2D" uid="uid://bsy5li0pneoh4" path="res://Node3D/Object_1_-2_0.res" id="76_dsf7v"]
+[ext_resource type="PackedScene" uid="uid://bjtriwfkdpgyb" path="res://UI.tscn" id="85_tjmm3"]
 [ext_resource type="AudioStream" uid="uid://bboanmgkxra5h" path="res://Audio/AmbienceDrone.mp3" id="88_sef48"]
-[ext_resource type="Script" path="res://BackgroundNoises.gd" id="89_rvpn4"]
+[ext_resource type="Script" uid="uid://rx815kqqctg7" path="res://BackgroundNoises.gd" id="89_rvpn4"]
 [ext_resource type="AudioStream" uid="uid://0eh4w7871djs" path="res://Audio/BackgroundRandomSounds/Growl1.mp3" id="90_deygs"]
 [ext_resource type="AudioStream" uid="uid://cfpsb6objfmvl" path="res://Audio/BackgroundRandomSounds/Laught2.mp3" id="91_6ievk"]
 [ext_resource type="AudioStream" uid="uid://cak4wl105mn5y" path="res://Audio/BackgroundRandomSounds/Scream2.mp3" id="92_rg2x5"]
@@ -330,23 +329,6 @@ ObjectsTexture = [ExtResource("76_dsf7v")]
 script = ExtResource("15_sqvbp")
 Zones = [SubResource("Resource_bf5p3"), SubResource("Resource_ady3b"), SubResource("Resource_aoqpd"), SubResource("Resource_m6lip"), SubResource("Resource_uy73y"), SubResource("Resource_slndv"), SubResource("Resource_8dw04"), SubResource("Resource_tjmm3"), SubResource("Resource_deygs"), SubResource("Resource_6ievk"), SubResource("Resource_rg2x5"), SubResource("Resource_5cpvc")]
 
-[sub_resource type="Gradient" id="Gradient_ac6pf"]
-colors = PackedColorArray(0, 0, 0, 1, 0.0119, 0.0157733, 0.07, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ek63v"]
-gradient = SubResource("Gradient_ac6pf")
-
-[sub_resource type="LabelSettings" id="LabelSettings_oaklg"]
-font_size = 241
-font_color = Color(0.304, 0.535467, 0.8, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_4bst2"]
-font_size = 226
-font_color = Color(0.56, 0.1232, 0.13048, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_uy3go"]
-font_size = 22
-
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -555,74 +537,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.961, 3, 96.3294)
 [node name="House" parent="." instance=ExtResource("27_sqvbp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.82536, 0.134308, -23.7407)
 
-[node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("59_ek63v")
-
-[node name="Notification" type="Label" parent="UI"]
-offset_left = 39.0
-offset_top = 590.0
-offset_right = 143.0
-offset_bottom = 613.0
-script = ExtResource("26_xrxkg")
-
-[node name="Objective" type="Label" parent="UI"]
-offset_left = 19.0
-offset_top = 12.0
-offset_right = 364.0
-offset_bottom = 69.0
-text = "Objective: Find Your House"
-
-[node name="Background" type="Sprite2D" parent="UI"]
-visible = false
-position = Vector2(575.75, 322.5)
-scale = Vector2(50, 897)
-texture = SubResource("GradientTexture1D_ek63v")
-
-[node name="Victory" type="Label" parent="UI"]
-visible = false
-offset_left = 275.0
-offset_top = 124.0
-offset_right = 877.0
-offset_bottom = 491.0
-text = "SAFE"
-label_settings = SubResource("LabelSettings_oaklg")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Defeat" type="Label" parent="UI"]
-visible = false
-offset_left = 82.0
-offset_top = 124.0
-offset_right = 1074.0
-offset_bottom = 491.0
-text = "BAD END"
-label_settings = SubResource("LabelSettings_4bst2")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MainMenu" type="Node2D" parent="UI"]
-visible = false
-
-[node name="IntroText" type="Label" parent="UI/MainMenu"]
-offset_left = 7.55637
-offset_top = -0.121281
-offset_right = 649.556
-offset_bottom = 402.879
-rotation = 3.14159
-scale = Vector2(1e-05, -1)
-text = "You are pursued by a monster. 
-
-It will kill you if it reaches you. 
-
-Your only hope of safety is to gather materials from the area to build a barrier around your house. 
-
-You first need to find your house.
-
-PRESS [F] TO BEGIN"
-label_settings = SubResource("LabelSettings_uy3go")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+[node name="UI" parent="." instance=ExtResource("85_tjmm3")]
 
 [node name="Trees" type="Node3D" parent="."]
 
