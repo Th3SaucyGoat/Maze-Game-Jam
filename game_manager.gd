@@ -42,7 +42,7 @@ func houseFound_SpawnInObjects():
 		var instance = objectScene.instantiate()
 		instance.resourceType = ResourceType.WOOD_PLANK
 		add_child(instance)
-		instance.global_position = spawnPositions.pop_at(randi_range(0,spawnPositions.size()-1)).global_position
+		instance.global_position = spawnPositions.pop_at(randi_range(0,spawnPositions.size())-1).global_position
 	for i in range(expectedInventory[ResourceType.NAILS]):
 		var instance = objectScene.instantiate()
 		instance.resourceType = instance.ResourceType.NAILS

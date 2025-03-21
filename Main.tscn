@@ -539,34 +539,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.323, 4, -99.032)
 script = ExtResource("59_oaklg")
 objectScene = ExtResource("24_hhcpw")
 
-[node name="Marker3D10" type="Marker3D" parent="GameManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4603, 0, 8.0476)
-
-[node name="Marker3D11" type="Marker3D" parent="GameManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.953, 0, 80.4417)
-
-[node name="Marker3D12" type="Marker3D" parent="GameManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.739, 0, 172.969)
-
-[node name="Marker3D13" type="Marker3D" parent="GameManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5169, 0, 128.205)
-
-[node name="Marker3D14" type="Marker3D" parent="GameManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.953, 0, 21.7554)
-
-[node name="Marker3D15" type="Marker3D" parent="GameManager"]
+[node name="SpawnPos5" type="Marker3D" parent="GameManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.396, 0, 68.019)
 
-[node name="Marker3D16" type="Marker3D" parent="GameManager"]
+[node name="SpawnPos6" type="Marker3D" parent="GameManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.403, 0, 114.711)
 
-[node name="Marker3D17" type="Marker3D" parent="GameManager"]
+[node name="SpawnPos1" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4603, 0, 8.0476)
+
+[node name="SpawnPos2" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.953, 0, 80.4417)
+
+[node name="SpawnPos" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.739, 0, 172.969)
+
+[node name="SpawnPos4" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5169, 0, 128.205)
+
+[node name="SpawnPos3" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.953, 0, 21.7554)
+
+[node name="SpawnPos7" type="Marker3D" parent="GameManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5821, 0, 101.646)
 
-[node name="Marker3D18" type="Marker3D" parent="GameManager"]
+[node name="SpawnPos8" type="Marker3D" parent="GameManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.6573, 0, 67.3765)
 
-[node name="Marker3D19" type="Marker3D" parent="GameManager"]
+[node name="SpawnPos9" type="Marker3D" parent="GameManager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.06, 0, 8.0476)
 
 [node name="UI" parent="." instance=ExtResource("85_tjmm3")]
@@ -770,3 +770,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6382, 3, -2.703)
 
 [node name="Deer" parent="." instance=ExtResource("28_hri7i")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.31679, 0, 106.983)
+
+[connection signal="can_interact" from="Player" to="UI" method="_on_player_can_interact"]

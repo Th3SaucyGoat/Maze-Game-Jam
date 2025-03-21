@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjtriwfkdpgyb"]
+[gd_scene load_steps=9 format=3 uid="uid://bjtriwfkdpgyb"]
 
 [ext_resource type="Script" uid="uid://dhd0rsj3e6dir" path="res://ui.gd" id="1_3b2b5"]
 [ext_resource type="Script" uid="uid://c1ekvr8a42r23" path="res://message_label.gd" id="2_g6l6n"]
@@ -19,6 +19,9 @@ font_color = Color(0.56, 0.1232, 0.13048, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_uy3go"]
 font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_3b2b5"]
+font_size = 32
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_3b2b5")
@@ -95,3 +98,12 @@ label_settings = SubResource("LabelSettings_uy3go")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="InteractLabel" type="Label" parent="."]
+visible = false
+offset_left = 117.0
+offset_top = 499.0
+offset_right = 157.0
+offset_bottom = 522.0
+text = "\"F\" to Interact"
+label_settings = SubResource("LabelSettings_3b2b5")

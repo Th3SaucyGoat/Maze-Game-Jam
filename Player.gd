@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 const ResourceType = preload("res://resource_type.gd").ResourceType
 
+signal can_interact(canInteract)
+
 @onready var head = $Head
 @onready var camera = $Head/Camera
 @onready var audio = $Audio
@@ -16,8 +18,8 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 
 var currentSpeed
 
-const SPEED = 500.0
-const SPRINTSPEED = 900.0
+const SPEED = 5000.0 #500.0
+const SPRINTSPEED = 500.0
 const JUMP_VELOCITY = 8.0
 const LOOK_SENSITIVITY = .003
 
@@ -83,10 +85,10 @@ func on_area_entered(body: Node3D, area: Area3D):
 	
 	if area.is_in_group("interaction_areas"):
 		currentInteractable = area
+		emit_signal("can_interact", true)
 		return
 		
 	if area.is_in_group("home"):
-		print(objective_stage)
 		if objective_stage == ObjectiveStage.FIND_HOUSE:
 			objective_stage = ObjectiveStage.COLLECT_RESOURCES
 			gameManager.houseFound_SpawnInObjects()
@@ -97,6 +99,9 @@ func on_area_entered(body: Node3D, area: Area3D):
 func on_area_exited(body: Node3D, area: Area3D):
 	if area == currentInteractable:
 		currentInteractable = null
+		print("area exited")
+		emit_signal("can_interact", false)
+		
 
 func movement(delta: float) -> void:
 	# Add the gravity.

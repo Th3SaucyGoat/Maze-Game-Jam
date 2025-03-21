@@ -9,18 +9,18 @@ var hammerScene = preload("res://resource_hammer.tscn")
 @export var resourceType = ResourceType.WOOD_PLANK
 
 var turnSpeed = 1.0
+var objectInstance
 
 func _ready() -> void:
-	var instance
 	match resourceType:
 		ResourceType.WOOD_PLANK:
-			instance = woodPlankScene.instantiate()
+			objectInstance = woodPlankScene.instantiate()
 		ResourceType.NAILS:
-			instance = nailsScene.instantiate()
+			objectInstance = nailsScene.instantiate()
 		ResourceType.HAMMER:
-			instance = hammerScene.instantiate()
-	add_child(instance)
-	rotate_x(deg_to_rad(30))
+			objectInstance = hammerScene.instantiate()
+	add_child(objectInstance)
+	objectInstance.rotate_x(deg_to_rad(30))
 
 func _process(delta: float) -> void:
-	rotate_y(turnSpeed*delta)
+	objectInstance.rotate_y(turnSpeed*delta)

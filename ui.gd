@@ -9,6 +9,7 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 @onready var background = $Background
 @onready var victoryText = $Victory
 @onready var defeatText = $Defeat
+@onready var interactLabel = $InteractLabel
 
 @onready var ItemLabel = $Objective/ItemLabel
 
@@ -61,3 +62,8 @@ func showReturnHomeObjective():
 @onready var notification = $Notification
 func push_notification(message: String) -> void:
 	notification.set_message(message)
+
+
+
+func _on_player_can_interact(canInteract) -> void:
+	interactLabel.visible = canInteract

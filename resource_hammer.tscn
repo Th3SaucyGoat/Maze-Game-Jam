@@ -1,3 +1,3 @@
-[gd_scene format=3 uid="uid://cmbh4gr8avllt"]
+[gd_scene format=3 uid="uid://cbt4xngverymy"]
 
-[node name="ResourceNails" type="Node2D"]
+[node name="Hammer" type="Node3D"]
