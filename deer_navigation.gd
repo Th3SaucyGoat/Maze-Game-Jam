@@ -2,6 +2,13 @@ extends Node3D
 
 @onready var player = get_node("../Player")
 @onready var navagent = $NavigationAgent3D
+@onready var ani = $AnimationPlayer
+@onready var audio = $AudioStreamPlayer3D
+@onready var growlTimer = $GrowlTimer
+
+@export var growlSounds: Array
+
+var timePerGrowl: Array = [10.0, 30.0]
 
 const JUMPSCARE_DISTANCE = 3.0
 var state = MonsterState.WANDERING
@@ -12,6 +19,9 @@ enum MonsterState {
 	FOLLOWING,
 	JUMPSCARE,
 }
+
+func _ready() -> void:
+	growlTimer.start(randf_range(timePerGrowl[0], timePerGrowl[1]))
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -79,3 +89,9 @@ func do_following(delta: float):
 
 func do_jumpscare(_delta: float):
 	pass
+
+
+func _on_growl_timer_timeout() -> void:
+	audio.stream = growlSounds.pick_random()
+	audio.play(0)
+	growlTimer.start(randf_range(timePerGrowl[0], timePerGrowl[1]))

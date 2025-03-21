@@ -19,4 +19,7 @@ shape = SubResource("CylinderShape3D_3jy6n")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.952941, 0.945098, 0.65098, 1)
 light_energy = 0.5
-omni_range = 25.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 10.0

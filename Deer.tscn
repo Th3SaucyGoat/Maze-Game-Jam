@@ -1,11 +1,83 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyf233xr8d7mj"]
+[gd_scene load_steps=5 format=3 uid="uid://dyf233xr8d7mj"]
 
 [ext_resource type="PackedScene" uid="uid://cpbprk134kjpx" path="res://Assets/Deer/Deer.glb" id="1_c3wsx"]
 [ext_resource type="Script" uid="uid://r44sr4odbsep" path="res://deer_navigation.gd" id="2_tijgk"]
+[ext_resource type="AudioStream" uid="uid://cxm6ntjutr4mr" path="res://Audio/Deer/Growl1.mp3" id="3_50qsf"]
+[ext_resource type="AudioStream" uid="uid://cnp3r10uselrg" path="res://Audio/Deer/Growl2.mp3" id="4_umi5l"]
 
 [node name="Deer" instance=ExtResource("1_c3wsx")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("2_tijgk")
+growlSounds = [ExtResource("3_50qsf"), ExtResource("4_umi5l")]
+
+[node name="Skeleton3D" parent="Deer" index="0"]
+bones/1/position = Vector3(0.147279, 0.88131, 0.787638)
+bones/1/rotation = Quaternion(0.458298, 0.538482, -0.458298, -0.538482)
+bones/3/rotation = Quaternion(1.51189e-07, -1.40052e-07, -0.527592, 0.849498)
+bones/4/position = Vector3(0.170008, 0.740761, -0.599784)
+bones/4/rotation = Quaternion(0.412851, 0.574068, -0.41285, -0.574068)
+bones/6/rotation = Quaternion(-1.96225e-07, -7.01072e-08, 0.181956, 0.983307)
+bones/7/position = Vector3(0.170008, 0.972058, 0.751714)
+bones/8/position = Vector3(0.476376, 1.02933, -0.79472)
+bones/9/position = Vector3(-0.147279, 0.574491, 0.412128)
+bones/11/rotation = Quaternion(1.69031e-08, 1.8048e-07, -0.0291509, 0.999575)
+bones/12/position = Vector3(-0.170008, 0.717864, -0.384553)
+bones/12/rotation = Quaternion(0.562784, -0.428105, 0.562784, -0.428105)
+bones/14/rotation = Quaternion(-9.28269e-09, 5.83408e-08, 0.0418434, 0.999124)
+bones/15/position = Vector3(-0.170008, 0.972058, 0.751714)
+bones/16/position = Vector3(-8.1864e-08, 1.4687, -0.195219)
+bones/16/rotation = Quaternion(0.707107, -2.8379e-07, -2.8379e-07, 0.707107)
+bones/17/position = Vector3(2.25424e-07, -0.087557, 0.242963)
+bones/17/rotation = Quaternion(-0.706491, -0.0295014, -0.0295014, 0.706491)
+bones/19/rotation = Quaternion(-0.00283966, -0.000261888, 0.0736428, 0.997281)
+bones/19/scale = Vector3(1.00043, 0.999146, 1.00043)
+bones/20/rotation = Quaternion(-0.0358395, 0.0237276, -0.743336, 0.667536)
+bones/21/rotation = Quaternion(3.52582e-08, 1.13466e-07, -0.359749, 0.933049)
+bones/24/rotation = Quaternion(0.536588, 0.84282, -0.027035, -0.0315793)
+bones/25/rotation = Quaternion(1.02693e-07, -1.24105e-07, 0.493846, 0.869549)
+bones/28/rotation = Quaternion(0.506991, 0.49291, -0.506991, -0.49291)
+bones/29/rotation = Quaternion(0.0531849, 0.0873104, 0.493376, 0.863787)
+bones/30/rotation = Quaternion(0.0772208, 0.0669977, 0.20728, 0.972925)
+bones/31/rotation = Quaternion(0.095811, 0.035665, -0.147051, 0.983832)
+bones/32/position = Vector3(2.45909e-07, 0.477996, 0.268483)
+bones/32/rotation = Quaternion(-0.0371803, -0.67118, 0.0221342, 0.74003)
+bones/33/rotation = Quaternion(-0.00186653, -0.00664713, 0.41219, 0.911072)
+bones/34/rotation = Quaternion(-0.0281979, -0.00247618, 0.091842, 0.995371)
+bones/35/rotation = Quaternion(-0.0240301, -0.00107487, 0.219068, 0.975413)
+bones/36/rotation = Quaternion(0.904452, -0.00425549, -0.0627167, -0.421918)
+bones/37/rotation = Quaternion(0.427619, 0.848518, -0.296765, 0.0953396)
+bones/38/rotation = Quaternion(2.9871e-08, 2.25482e-08, 0.821509, 0.570195)
+bones/40/rotation = Quaternion(-0.299309, 0.89921, -0.314515, -0.0540048)
+bones/41/rotation = Quaternion(-1.54227e-07, -1.09659e-07, -0.524856, 0.851191)
+bones/43/position = Vector3(-0.476376, 1.02933, -0.79472)
+bones/44/position = Vector3(5.78816e-09, 1.67589, 0.820503)
+bones/44/rotation = Quaternion(0.0841612, -0.70208, -0.0841611, 0.702081)
+bones/44/scale = Vector3(1, 1, 1)
+bones/45/rotation = Quaternion(1.25636e-07, -2.1076e-08, -0.780316, 0.625386)
+bones/46/rotation = Quaternion(8.32064e-14, 6.40441e-10, -7.30157e-07, 1)
+bones/47/rotation = Quaternion(-1.22319e-13, 1.91316e-08, 8.71718e-07, 1)
+bones/48/rotation = Quaternion(1.99846e-15, -8.88178e-15, 2.77556e-16, 1)
+bones/49/rotation = Quaternion(2.28049e-14, -1.43712e-08, -1.86265e-07, 1)
+bones/50/rotation = Quaternion(1.37078e-07, -1.32915e-08, -0.792822, 0.609453)
+bones/51/rotation = Quaternion(1.49697e-13, -3.88133e-09, -1.07288e-06, 1)
+bones/52/rotation = Quaternion(-1.5276e-13, 1.20469e-08, 9.98378e-07, 1)
+bones/53/rotation = Quaternion(-1.33501e-13, -1.1665e-09, 7.89762e-07, 1)
+bones/54/rotation = Quaternion(1.32484e-13, 1.16646e-09, -7.89762e-07, 1)
+bones/56/rotation = Quaternion(0.113344, 0.00415435, 0.12223, 0.986)
+bones/57/rotation = Quaternion(0.00624853, -0.00410435, 0.00314969, 0.999967)
+bones/59/rotation = Quaternion(0.113344, -0.00415436, -0.12223, 0.986)
+bones/60/rotation = Quaternion(0.00624848, 0.00410434, -0.00314978, 0.999967)
+bones/62/rotation = Quaternion(-0.171245, -0.0614183, 0.0706394, 0.980772)
+bones/62/scale = Vector3(1, 1, 1)
+bones/64/rotation = Quaternion(-0.171245, 0.0614182, -0.0706394, 0.980772)
+bones/64/scale = Vector3(1, 1, 1)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
 navigation_layers = 9
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
+max_distance = 100.0
+
+[node name="GrowlTimer" type="Timer" parent="." index="4"]
+
+[connection signal="timeout" from="GrowlTimer" to="." method="_on_growl_timer_timeout"]

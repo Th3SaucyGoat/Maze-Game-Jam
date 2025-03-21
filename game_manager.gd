@@ -37,7 +37,6 @@ func _process(delta: float) -> void:
 
 
 func houseFound_SpawnInObjects():
-	ui.set_objective("Find Objects")
 	ui.showItemObjective(expectedInventory)
 	for i in range(expectedInventory[ResourceType.WOOD_PLANK]):
 		var instance = objectScene.instantiate()
@@ -71,12 +70,12 @@ func collectedObject(type):
 	else:
 		print("Found a \"%s\" (dunno wtf this is)" % resourceName)
 	ui.itemFound(inventory, expectedInventory)
-		#var count = inventory[type]
-		#var message = "Gathered %s. Now have %d" % [resourceName, count]
-		#ui.push_notification(message)
+
 
 	if inventory[ResourceType.WOOD_PLANK] == expectedInventory[ResourceType.WOOD_PLANK] and inventory[ResourceType.NAILS] == expectedInventory[ResourceType.NAILS] and inventory[ResourceType.HAMMER] == expectedInventory[ResourceType.HAMMER]:
-		gameWon()
+		#gameWon()
+		Player.set_objective_to_return_home()
+		ui.showReturnHomeObjective()
 func gameLost():
 	ui.defeat_screen()
 

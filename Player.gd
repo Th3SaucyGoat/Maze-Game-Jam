@@ -12,6 +12,7 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 @onready var gameManager = get_node("../GameManager")
 
 @export var footstepClips: Array
+@export var flashlightSound: AudioStream
 
 var currentSpeed
 
@@ -46,6 +47,7 @@ var randomVariation: float = .1
 
 @export var nailGrabSound: AudioStream
 @export var hammerGrabSound: AudioStream
+@export var plankGrabSound: AudioStream
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -61,6 +63,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		flashLight.rotation.x = camera.rotation.x
 	if Input.is_action_just_pressed("ToggleFlashlight"):
 		flashLight.visible = false if flashLight.visible  else true
+		audio.stream = flashlightSound
+		audio.play(0)
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -81,11 +85,14 @@ func on_area_entered(body: Node3D, area: Area3D):
 		currentInteractable = area
 		return
 		
-	if objective_stage == ObjectiveStage.FIND_HOUSE:
-		if area.is_in_group("home"):
+	if area.is_in_group("home"):
+		print(objective_stage)
+		if objective_stage == ObjectiveStage.FIND_HOUSE:
 			objective_stage = ObjectiveStage.COLLECT_RESOURCES
-			#ui.set_objective("Collect barrier materials (X remain)") !!!
 			gameManager.houseFound_SpawnInObjects()
+		
+		elif objective_stage == ObjectiveStage.RETURN_HOME:
+			currentInteractable = area
 	
 func on_area_exited(body: Node3D, area: Area3D):
 	if area == currentInteractable:
@@ -126,22 +133,25 @@ func interaction() -> void:
 		return
 	
 	if Input.is_action_just_pressed("Interact"):
-		# Resource type is currently the same as interactble type
-		var resourceType = currentInteractable.get_interactable_type()
-		var resourceName
-		gameManager.collectedObject(resourceType)
-		#audio.stream = 
-		match resourceType:
-			#ResourceType.WOOD_PLANK:
-				#audio.stream = 
-				#audio.play(0)
-			ResourceType.NAILS:
-				audio.stream = nailGrabSound
-				audio.play(0)
-			ResourceType.HAMMER:
-				audio.stream = hammerGrabSound
-				audio.play(0)
-		currentInteractable.disable()
+		if objective_stage == ObjectiveStage.RETURN_HOME:
+			gameManager.gameWon()
+		elif objective_stage == ObjectiveStage.COLLECT_RESOURCES:
+			# Resource type is currently the same as interactble type
+			var resourceType = currentInteractable.get_interactable_type()
+			var resourceName
+			gameManager.collectedObject(resourceType)
+			#audio.stream = 
+			match resourceType:
+				ResourceType.WOOD_PLANK:
+					audio.stream = plankGrabSound
+					audio.play(0)
+				ResourceType.NAILS:
+					audio.stream = nailGrabSound
+					audio.play(0)
+				ResourceType.HAMMER:
+					audio.stream = hammerGrabSound
+					audio.play(0)
+			currentInteractable.disable()
 
 var victory_camera_position
 func victory_camera_pan(delta: float):
@@ -164,3 +174,6 @@ func victory_cutscene():
 	victory_camera_position = house.transform.origin 
 	victory_camera_position += 20.0 * Vector3.UP 
 	victory_camera_position += 40.0 * Vector3.BACK
+
+func set_objective_to_return_home():
+	objective_stage = ObjectiveStage.RETURN_HOME

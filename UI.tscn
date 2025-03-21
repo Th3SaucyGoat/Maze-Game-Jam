@@ -38,6 +38,7 @@ offset_bottom = 69.0
 text = "Objective: Find Your House"
 
 [node name="ItemLabel" type="Label" parent="Objective"]
+layout_mode = 0
 offset_left = -2.0
 offset_top = 31.0
 offset_right = 254.0

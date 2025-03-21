@@ -47,11 +47,16 @@ func itemFound(currentInv, expectedInv):
 	ItemLabel.text = str(currentInv[ResourceType.NAILS])+"/"+str(expectedInv[ResourceType.NAILS])+ " Nails\n"+ str(currentInv[ResourceType.WOOD_PLANK])+"/"+str(expectedInv[ResourceType.WOOD_PLANK]) + " Wood Planks\n"+ str(currentInv[ResourceType.HAMMER])+"/"+str(expectedInv[ResourceType.HAMMER])+" Hammers"
 
 func showItemObjective(expectedInv):
+	objectiveText.text = "Find Objects"
 	ItemLabel.text = "0/"+str(expectedInv[ResourceType.NAILS])+ " Nails\n0/"+str(expectedInv[ResourceType.WOOD_PLANK]) + " Wood Planks\n0/"+str(expectedInv[ResourceType.HAMMER])+" Hammers"
 
+func showReturnHomeObjective():
+	ItemLabel.visible = false
+	objectiveText.text = "Return home and build the barrier!"
+
 @onready var objectiveText = $Objective
-func set_objective(message: String) -> void:
-	objectiveText.text = "Objective: %s" % message
+#func set_objective(message: String) -> void:
+	#objectiveText.text = "Objective: %s" % message
 
 @onready var notification = $Notification
 func push_notification(message: String) -> void:
