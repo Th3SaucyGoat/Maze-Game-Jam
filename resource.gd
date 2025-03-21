@@ -20,7 +20,7 @@ func _ready() -> void:
 		ResourceType.HAMMER:
 			instance = hammerScene.instantiate()
 	add_child(instance)
-	rotate_x(rad_to_deg(30))
+	rotate_x(deg_to_rad(30))
 
 func _process(delta: float) -> void:
 	rotate_y(turnSpeed*delta)

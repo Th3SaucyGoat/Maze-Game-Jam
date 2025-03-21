@@ -5,7 +5,7 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 @onready var head = $Head
 @onready var camera = $Head/Camera
 @onready var audio = $Audio
-#@onready var flashLight = $Head/FlashLight
+@onready var flashLight = $Head/Flashlight
 
 @onready var cottage = get_node("../House")
 
@@ -60,9 +60,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotate_y(-event.relative.x *LOOK_SENSITIVITY)
 		camera.rotate_x(-event.relative.y*LOOK_SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
-		#flashLight.rotation.x = camera.rotation.x
-	#if Input.is_action_just_pressed("ToggleFlashlight"):
-		#flashLight.visible = false if flashLight.visible  else true
+		flashLight.rotation.x = camera.rotation.x
+	if Input.is_action_just_pressed("ToggleFlashlight"):
+		flashLight.visible = false if flashLight.visible  else true
 
 func _physics_process(delta: float) -> void:
 	match state:

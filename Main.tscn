@@ -102,18 +102,19 @@
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_uu6xs"]
 panorama = ExtResource("1_glv2v")
-energy_multiplier = 2.0
+energy_multiplier = 0.5
 
 [sub_resource type="Sky" id="Sky_r0du0"]
 sky_material = SubResource("PanoramaSkyMaterial_uu6xs")
 
 [sub_resource type="Environment" id="Environment_rxg2q"]
 background_mode = 2
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_r0du0")
 ambient_light_source = 3
-ambient_light_color = Color(0.187893, 0.187893, 0.187893, 1)
+ambient_light_color = Color(0.16781, 0.16781, 0.16781, 1)
 ambient_light_sky_contribution = 0.1
-ambient_light_energy = 0.5
+ambient_light_energy = 0.4
 
 [sub_resource type="Resource" id="Resource_hri7i"]
 script = ExtResource("7_5tuhn")
@@ -365,9 +366,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.76956, 0, 27.273)
 
 [node name="MazeParent" parent="." instance=ExtResource("20_xrxkg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.0004, 0, -99.2156)
-
-[node name="WoodResource" parent="." instance=ExtResource("24_hhcpw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8676, 0, 19.724)
 
 [node name="Deer" parent="." instance=ExtResource("28_hri7i")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.31679, 0, 106.983)
