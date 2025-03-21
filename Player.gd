@@ -4,16 +4,19 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 
 @onready var head = $Head
 @onready var camera = $Head/Camera
+@onready var audio = $Audio
 #@onready var flashLight = $Head/FlashLight
 
 @onready var cottage = get_node("../House")
 
 @onready var ui = get_node("../UI")
 
+@export var footstepClips: Array
+
 var currentSpeed
 
-const SPEED = 10.0
-const SPRINTSPEED = 18.0
+const SPEED = 500.0
+const SPRINTSPEED = 900.0
 const JUMP_VELOCITY = 8.0
 const LOOK_SENSITIVITY = .003
 
@@ -38,6 +41,12 @@ enum ObjectiveStage {
 	COLLECT_RESOURCES,
 	RETURN_HOME,
 }
+
+var timeElasped: float = 0.0
+var initialTimeTillFootstep: float = 1.0
+var currentTimeTillFootstep: float = 1.0
+var spintBonus: float = 1.4
+var randomVariation: float = .1
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -96,11 +105,17 @@ func movement(delta: float) -> void:
 	var inputDir = Input.get_vector("MoveLeft", "MoveRight", "MoveForward", "MoveBackward")
 	var direction = (head.transform.basis * Vector3(inputDir.x, 0, inputDir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * currentSpeed
-		velocity.z = direction.z * currentSpeed
+		velocity.x = direction.x * currentSpeed*delta
+		velocity.z = direction.z * currentSpeed*delta
+		timeElasped += delta if currentSpeed == SPEED else delta*spintBonus
+		if timeElasped > currentTimeTillFootstep:
+			audio.stream = footstepClips.pick_random()
+			audio.play(0)
+			timeElasped = 0
+			currentTimeTillFootstep =  randf_range(initialTimeTillFootstep-randomVariation, initialTimeTillFootstep+randomVariation)
 	else:
-		velocity.x = move_toward(velocity.x, 0, currentSpeed)
-		velocity.z = move_toward(velocity.z, 0, currentSpeed)
+		velocity.x = move_toward(velocity.x, 0, currentSpeed*delta)
+		velocity.z = move_toward(velocity.z, 0, currentSpeed*delta)
 
 	move_and_slide()
 	
