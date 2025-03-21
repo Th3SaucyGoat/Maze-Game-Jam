@@ -9,7 +9,6 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 
 @onready var house = get_node("../NavigationRegion3D/House")
 
-@onready var ui = get_node("../UI")
 @onready var gameManager = get_node("../GameManager")
 
 @export var footstepClips: Array
@@ -22,11 +21,7 @@ const JUMP_VELOCITY = 8.0
 const LOOK_SENSITIVITY = .003
 
 var currentInteractable: Area3D = null
-var inventory = {
-	ResourceType.WOOD_PLANK: 0,
-	ResourceType.NAILS: 0,
-	ResourceType.HAMMER: 0,
-}
+
 
 var state = PlayerState.CONTROLLABLE
 var objective_stage = ObjectiveStage.FIND_HOUSE
@@ -46,8 +41,11 @@ enum ObjectiveStage {
 var timeElasped: float = 0.0
 var initialTimeTillFootstep: float = 1.0
 var currentTimeTillFootstep: float = 1.0
-var spintBonus: float = 1.4
+var sprintBonus: float = 1.4
 var randomVariation: float = .1
+
+@export var nailGrabSound: AudioStream
+@export var hammerGrabSound: AudioStream
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -86,8 +84,8 @@ func on_area_entered(body: Node3D, area: Area3D):
 	if objective_stage == ObjectiveStage.FIND_HOUSE:
 		if area.is_in_group("home"):
 			objective_stage = ObjectiveStage.COLLECT_RESOURCES
-			ui.set_objective("Collect barrier materials (X remain)")
-			gameManager.spawnInObjects()
+			#ui.set_objective("Collect barrier materials (X remain)") !!!
+			gameManager.houseFound_SpawnInObjects()
 	
 func on_area_exited(body: Node3D, area: Area3D):
 	if area == currentInteractable:
@@ -109,12 +107,13 @@ func movement(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * currentSpeed*delta
 		velocity.z = direction.z * currentSpeed*delta
-		timeElasped += delta if currentSpeed == SPEED else delta*spintBonus
-		if timeElasped > currentTimeTillFootstep:
-			audio.stream = footstepClips.pick_random()
-			audio.play(0)
-			timeElasped = 0
-			currentTimeTillFootstep =  randf_range(initialTimeTillFootstep-randomVariation, initialTimeTillFootstep+randomVariation)
+		if velocity.y == 0:
+			timeElasped += delta if currentSpeed == SPEED else delta*sprintBonus
+			if timeElasped > currentTimeTillFootstep:
+				audio.stream = footstepClips.pick_random()
+				audio.play(0)
+				timeElasped = 0
+				currentTimeTillFootstep =  randf_range(initialTimeTillFootstep-randomVariation, initialTimeTillFootstep+randomVariation)
 	else:
 		velocity.x = move_toward(velocity.x, 0, currentSpeed*delta)
 		velocity.z = move_toward(velocity.z, 0, currentSpeed*delta)
@@ -130,23 +129,18 @@ func interaction() -> void:
 		# Resource type is currently the same as interactble type
 		var resourceType = currentInteractable.get_interactable_type()
 		var resourceName
+		gameManager.collectedObject(resourceType)
+		#audio.stream = 
 		match resourceType:
-			ResourceType.WOOD_PLANK:
-				resourceName = "wood plank"
+			#ResourceType.WOOD_PLANK:
+				#audio.stream = 
+				#audio.play(0)
 			ResourceType.NAILS:
-				resourceName = "nails"
+				audio.stream = nailGrabSound
+				audio.play(0)
 			ResourceType.HAMMER:
-				resourceName = "hammer"
-		
-		if inventory.has(resourceType):
-			inventory[resourceType] += 1
-			var count = inventory[resourceType]
-			var message = "Gathered %s. Now have %d" % [resourceName, count]
-			ui.push_notification(message)
-			victory_cutscene()
-		else:
-			print("Found a \"%s\" (dunno wtf this is)" % resourceName)
-			
+				audio.stream = hammerGrabSound
+				audio.play(0)
 		currentInteractable.disable()
 
 var victory_camera_position
@@ -162,11 +156,10 @@ func victory_camera_pan(delta: float):
 
 func jumpscare_cutscene(deer: Node3D):
 	state = PlayerState.JUMPSCARE_CUTSCENE
-	ui.defeat_screen()
+	gameManager.gameLost()
 
 func victory_cutscene():
 	state = PlayerState.VICTORY_CUTSCENE
-	ui.victory_screen()
 	
 	victory_camera_position = house.transform.origin 
 	victory_camera_position += 20.0 * Vector3.UP 

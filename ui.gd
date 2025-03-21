@@ -4,9 +4,13 @@ const TOTAL_TIME = 2.0;
 const FADE_TIME = 1.0;
 var timer = TOTAL_TIME;
 
+const ResourceType = preload("res://resource_type.gd").ResourceType
+
 @onready var background = $Background
 @onready var victoryText = $Victory
 @onready var defeatText = $Defeat
+
+@onready var ItemLabel = $Objective/ItemLabel
 
 enum UIState {
 	MAIN_MENU,
@@ -38,6 +42,12 @@ func victory_screen() -> void:
 	background.visible = true
 	victoryText.visible = true
 	state = UIState.VICTORY
+
+func itemFound(currentInv, expectedInv):
+	ItemLabel.text = str(currentInv[ResourceType.NAILS])+"/"+str(expectedInv[ResourceType.NAILS])+ " Nails\n"+ str(currentInv[ResourceType.WOOD_PLANK])+"/"+str(expectedInv[ResourceType.WOOD_PLANK]) + " Wood Planks\n"+ str(currentInv[ResourceType.HAMMER])+"/"+str(expectedInv[ResourceType.HAMMER])+" Hammers"
+
+func showItemObjective(expectedInv):
+	ItemLabel.text = "0/"+str(expectedInv[ResourceType.NAILS])+ " Nails\n0/"+str(expectedInv[ResourceType.WOOD_PLANK]) + " Wood Planks\n0/"+str(expectedInv[ResourceType.HAMMER])+" Hammers"
 
 @onready var objectiveText = $Objective
 func set_objective(message: String) -> void:
