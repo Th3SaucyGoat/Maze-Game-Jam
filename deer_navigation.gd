@@ -77,5 +77,5 @@ func do_following(delta: float):
 		player.jumpscare_cutscene(self)
 		state = MonsterState.JUMPSCARE
 
-func do_jumpscare(delta: float):
+func do_jumpscare(_delta: float):
 	pass

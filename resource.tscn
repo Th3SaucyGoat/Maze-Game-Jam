@@ -15,3 +15,8 @@ script = ExtResource("2_cpix3")
 [node name="InteractionCollider" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("CylinderShape3D_3jy6n")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.952941, 0.945098, 0.65098, 1)
+light_energy = 0.5
+omni_range = 25.0
