@@ -111,7 +111,7 @@ sky_material = SubResource("PanoramaSkyMaterial_uu6xs")
 background_mode = 2
 sky = SubResource("Sky_r0du0")
 ambient_light_source = 3
-ambient_light_color = Color(0.91055, 0.91055, 0.91055, 1)
+ambient_light_color = Color(0.187893, 0.187893, 0.187893, 1)
 ambient_light_sky_contribution = 0.1
 ambient_light_energy = 0.5
 
@@ -523,7 +523,36 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 26.421, 0, 160)
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.25335, 0, 160)
 
 [node name="GameManager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.3228, 0, -99.0324)
 script = ExtResource("59_oaklg")
+objectScene = ExtResource("24_hhcpw")
+
+[node name="Marker3D" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7845, 3, 96.3294)
+
+[node name="Marker3D2" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.3006, 3, 96.3294)
+
+[node name="Marker3D3" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.0503, 3, 96.3294)
+
+[node name="Marker3D4" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.1632, 3, 96.3294)
+
+[node name="Marker3D5" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.263, 3, 96.3294)
+
+[node name="Marker3D6" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.045, 3, 96.3294)
+
+[node name="Marker3D7" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.576, 3, 96.3294)
+
+[node name="Marker3D8" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.77, 3, 96.3294)
+
+[node name="Marker3D9" type="Marker3D" parent="GameManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.961, 3, 96.3294)
 
 [node name="House" parent="." instance=ExtResource("27_sqvbp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.82536, 0.134308, -23.7407)
@@ -773,3 +802,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.032, -1.52588e-05, -162.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.6436, 0)
 volume_db = -2.0
 max_distance = 1000.0
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.8625, 0, -90.9848)
+
+[node name="Marker3D2" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.6302, 0, -18.5907)
+
+[node name="Marker3D3" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.4162, 0, 73.9366)
+
+[node name="Marker3D4" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.8059, 0, 29.1726)
+
+[node name="Marker3D5" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.6302, 0, -77.277)
+
+[node name="Marker3D6" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.0732, 0, -31.0134)
+
+[node name="Marker3D7" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0802, 0, 15.6786)
+
+[node name="Marker3D8" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7407, 0, 2.61361)
+
+[node name="Marker3D9" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.6655, 0, -31.6559)
+
+[node name="Marker3D10" type="Marker3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7372, 0, -90.9848)

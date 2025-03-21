@@ -10,6 +10,7 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 @onready var cottage = get_node("../House")
 
 @onready var ui = get_node("../UI")
+@onready var gameManager = get_node("../GameManager")
 
 @export var footstepClips: Array
 
@@ -86,6 +87,7 @@ func on_area_entered(body: Node3D, area: Area3D):
 		if area.is_in_group("home"):
 			objective_stage = ObjectiveStage.COLLECT_RESOURCES
 			ui.set_objective("Collect barrier materials (X remain)")
+			gameManager.spawnInObjects()
 	
 func on_area_exited(body: Node3D, area: Area3D):
 	if area == currentInteractable:
