@@ -7,7 +7,7 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 @onready var audio = $Audio
 @onready var flashLight = $Head/Flashlight
 
-@onready var cottage = get_node("../House")
+@onready var house = get_node("../NavigationRegion3D/House")
 
 @onready var ui = get_node("../UI")
 @onready var gameManager = get_node("../GameManager")
@@ -151,13 +151,13 @@ func interaction() -> void:
 
 var victory_camera_position
 func victory_camera_pan(delta: float):
-	var temp: Vector3 = victory_camera_position - cottage.transform.origin
+	var temp: Vector3 = victory_camera_position - house.transform.origin
 	temp = temp.rotated(Vector3.UP, -0.1 * delta)
-	temp += cottage.transform.origin
+	temp += house.transform.origin
 	victory_camera_position = temp
 	camera.look_at_from_position(
 		victory_camera_position, 
-		cottage.transform.origin, Vector3.UP
+		house.transform.origin, Vector3.UP
 		)
 
 func jumpscare_cutscene(deer: Node3D):
@@ -168,6 +168,6 @@ func victory_cutscene():
 	state = PlayerState.VICTORY_CUTSCENE
 	ui.victory_screen()
 	
-	victory_camera_position = cottage.transform.origin 
+	victory_camera_position = house.transform.origin 
 	victory_camera_position += 20.0 * Vector3.UP 
 	victory_camera_position += 40.0 * Vector3.BACK

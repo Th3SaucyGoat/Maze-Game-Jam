@@ -71,6 +71,11 @@ ToggleFlashlight={
 ]
 }
 
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+
 [terraBrush]
 
 brushes/decal_color=Color(1, 0, 0, 1)

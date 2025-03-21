@@ -8,3 +8,4 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("2_tijgk")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
+navigation_layers = 9

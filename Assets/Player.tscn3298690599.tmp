@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://bylhy7qivqr1l"]
+
+[ext_resource type="Script" uid="uid://dgguclyrf28kn" path="res://Player.gd" id="1_1fna3"]
+[ext_resource type="AudioStream" uid="uid://cm2xsmeyqdlpy" path="res://Audio/Footsteps/DirtFootstep3.mp3" id="2_ify7s"]
+[ext_resource type="AudioStream" uid="uid://clmxgdmkr6piw" path="res://Audio/Footsteps/DirtFootstep1.mp3" id="3_ng366"]
+[ext_resource type="AudioStream" uid="uid://badei858d77ah" path="res://Audio/Footsteps/DirtFootstep5.mp3" id="4_6vidr"]
+[ext_resource type="AudioStream" uid="uid://8kwwgu6q8787" path="res://Audio/Footsteps/DirtFootstep2.mp3" id="5_wmw2k"]
+[ext_resource type="AudioStream" uid="uid://c0fmctcvjda44" path="res://Audio/Footsteps/DirtFootstep4.mp3" id="6_j0vyv"]
+[ext_resource type="Texture2D" uid="uid://8xfk4l3g5p8y" path="res://Assets/FlashLightTexture.jpg" id="7_j0vyv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r0du0"]
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_1fna3")
+footstepClips = [ExtResource("2_ify7s"), ExtResource("3_ng366"), ExtResource("4_6vidr"), ExtResource("5_wmw2k"), ExtResource("6_j0vyv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_r0du0")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera" type="Camera3D" parent="Head"]
+
+[node name="Flashlight" type="SpotLight3D" parent="Head"]
+light_color = Color(0.999998, 0.998526, 0.717064, 1)
+light_energy = 10.0
+light_projector = ExtResource("7_j0vyv")
+shadow_enabled = true
+spot_range = 50.0
+spot_angle = 25.0
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 0, 0, 0)
+stream = ExtResource("2_ify7s")
+max_distance = 15.0
