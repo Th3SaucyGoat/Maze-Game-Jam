@@ -5,6 +5,7 @@ extends Node3D
 const ResourceType = preload("res://resource_type.gd").ResourceType
 
 @onready var ui = get_node("../UI")
+@onready var barrier = get_node("../Barrier")
 
 @onready var Player = get_node("../Player")
 
@@ -80,5 +81,6 @@ func gameLost():
 	ui.defeat_screen()
 
 func gameWon():
+	barrier.visible = true
 	ui.victory_screen()
 	Player.victory_cutscene()
