@@ -8,8 +8,14 @@ var timer = TOTAL_TIME;
 @onready var victoryText = $Victory
 @onready var defeatText = $Defeat
 
-var victory = false
-var defeat = false
+enum UIState {
+	MAIN_MENU,
+	IN_GAME,
+	VICTORY,
+	DEFEAT,
+}
+
+var state = UIState.MAIN_MENU
 
 func _ready() -> void:
 	background.modulate.a = 0.0
@@ -17,28 +23,21 @@ func _ready() -> void:
 	defeatText.modulate.a = 0.0
 
 func _process(delta: float) -> void:
-	if victory or defeat:
-		timer -= delta
-		
-	if timer < FADE_TIME:
-		var amount = (FADE_TIME - timer) / FADE_TIME
-		background.modulate.a = amount
-		if victory:
-			victoryText.modulate.a = amount
-		if defeat:
-			defeatText.modulate.a = amount
+	match state:
+		UIState.IN_GAME:
+			return
 
 func defeat_screen() -> void:
 	var timer = TOTAL_TIME
 	background.visible = true
 	defeatText.visible = true
-	defeat = true
+	state = UIState.DEFEAT
 
 func victory_screen() -> void:
 	var timer = TOTAL_TIME
 	background.visible = true
 	victoryText.visible = true
-	victory = true
+	state = UIState.VICTORY
 
 @onready var objectiveText = $Objective
 func set_objective(message: String) -> void:

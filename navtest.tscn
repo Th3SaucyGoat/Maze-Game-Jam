@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://mg3j6suy481r"]
+[gd_scene load_steps=9 format=3 uid="uid://mg3j6suy481r"]
 
 [ext_resource type="Script" uid="uid://d4a6lms8t5ekc" path="res://navigation_region.gd" id="1_tph7w"]
 [ext_resource type="PackedScene" uid="uid://dyf233xr8d7mj" path="res://Deer.tscn" id="2_nlfv2"]
@@ -9,11 +9,14 @@ agent_radius = 0.25
 
 [sub_resource type="BoxMesh" id="BoxMesh_4h6bl"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2qy7u"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_nlfv2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nlfv2"]
 
 [node name="Navtest" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0415878, 0.0804367, 0.0811729)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.396451, 0)
@@ -25,12 +28,21 @@ transform = Transform3D(7.695, 0, 0, 0, 7.695, 0, 0, 0, 7.695, -0.11495, 2.13289
 mesh = SubResource("BoxMesh_4h6bl")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_2qy7u")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(27.865, 0, 0, 0, 1.172, 0, 0, 0, 23.402, -0.185269, -0.156449, 0)
 mesh = SubResource("BoxMesh_nlfv2")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D2"]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D2/StaticBody3D"]
 shape = SubResource("BoxShape3D_nlfv2")
