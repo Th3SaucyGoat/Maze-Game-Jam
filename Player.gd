@@ -19,8 +19,8 @@ signal can_interact(canInteract)
 
 var currentSpeed
 
-const SPEED = 5000.0 #500.0
-const SPRINTSPEED = 500.0
+const SPEED = 500.0 #500.0
+const SPRINTSPEED = 900.0
 const JUMP_VELOCITY = 8.0
 const LOOK_SENSITIVITY = .003
 

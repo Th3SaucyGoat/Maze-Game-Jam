@@ -3,17 +3,18 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://p704curm126g"
-path.s3tc="res://.godot/imported/bake1024_color.png-08b044cf4a41ea19e1d87386f9d1c3a9.s3tc.ctex"
+path.s3tc="res://.godot/imported/bake1024_color.png-3f52551c35d45e98722b6dd4b9846d97.s3tc.ctex"
+path.etc2="res://.godot/imported/bake1024_color.png-3f52551c35d45e98722b6dd4b9846d97.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
 
 [deps]
 
-source_file="res://Assets/textures/bake1024_color.png"
-dest_files=["res://.godot/imported/bake1024_color.png-08b044cf4a41ea19e1d87386f9d1c3a9.s3tc.ctex"]
+source_file="res://Assets/Textures/bake1024_color.png"
+dest_files=["res://.godot/imported/bake1024_color.png-3f52551c35d45e98722b6dd4b9846d97.s3tc.ctex", "res://.godot/imported/bake1024_color.png-3f52551c35d45e98722b6dd4b9846d97.etc2.ctex"]
 
 [params]
 

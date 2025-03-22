@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs5tmtlkln8nq"
 path.s3tc="res://.godot/imported/Woodbase-BrickSupport_Normal.png-1e5e1eb1c48964126eae308822bc7ac5.s3tc.ctex"
+path.etc2="res://.godot/imported/Woodbase-BrickSupport_Normal.png-1e5e1eb1c48964126eae308822bc7ac5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Fence/Woodbase-BrickSupport_Normal.png"
-dest_files=["res://.godot/imported/Woodbase-BrickSupport_Normal.png-1e5e1eb1c48964126eae308822bc7ac5.s3tc.ctex"]
+dest_files=["res://.godot/imported/Woodbase-BrickSupport_Normal.png-1e5e1eb1c48964126eae308822bc7ac5.s3tc.ctex", "res://.godot/imported/Woodbase-BrickSupport_Normal.png-1e5e1eb1c48964126eae308822bc7ac5.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dd1hs6hmrq100"
 path.s3tc="res://.godot/imported/Part11Mtl_baseColor.png-f3f6864d4de34ca93405de8c2c088ccc.s3tc.ctex"
+path.etc2="res://.godot/imported/Part11Mtl_baseColor.png-f3f6864d4de34ca93405de8c2c088ccc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/bush_square/textures/Part11Mtl_baseColor.png"
-dest_files=["res://.godot/imported/Part11Mtl_baseColor.png-f3f6864d4de34ca93405de8c2c088ccc.s3tc.ctex"]
+dest_files=["res://.godot/imported/Part11Mtl_baseColor.png-f3f6864d4de34ca93405de8c2c088ccc.s3tc.ctex", "res://.godot/imported/Part11Mtl_baseColor.png-f3f6864d4de34ca93405de8c2c088ccc.etc2.ctex"]
 
 [params]
 

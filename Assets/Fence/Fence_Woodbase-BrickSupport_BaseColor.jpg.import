@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://q8mlpe32h25d"
 path.s3tc="res://.godot/imported/Fence_Woodbase-BrickSupport_BaseColor.jpg-8cd39e8760e41adc3fb5a6c640ef8685.s3tc.ctex"
+path.etc2="res://.godot/imported/Fence_Woodbase-BrickSupport_BaseColor.jpg-8cd39e8760e41adc3fb5a6c640ef8685.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Fence/Fence_Woodbase-BrickSupport_BaseColor.jpg"
-dest_files=["res://.godot/imported/Fence_Woodbase-BrickSupport_BaseColor.jpg-8cd39e8760e41adc3fb5a6c640ef8685.s3tc.ctex"]
+dest_files=["res://.godot/imported/Fence_Woodbase-BrickSupport_BaseColor.jpg-8cd39e8760e41adc3fb5a6c640ef8685.s3tc.ctex", "res://.godot/imported/Fence_Woodbase-BrickSupport_BaseColor.jpg-8cd39e8760e41adc3fb5a6c640ef8685.etc2.ctex"]
 
 [params]
 

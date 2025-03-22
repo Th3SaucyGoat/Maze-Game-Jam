@@ -4,13 +4,20 @@ extends Node3D
 @onready var navagent = $NavigationAgent3D
 @onready var anitree = $AnimationTree
 @onready var ani = $TrueAnimationPlayer
-@onready var audio = $AudioStreamPlayer3D
+@onready var audio = $Growl
+@onready var footstepSrc = $Footsteps
+@onready var footstepTimer = $FootstepTimer
 @onready var growlTimer = $GrowlTimer
 @onready var skeleton = $Deer/Skeleton3D
 @onready var jumpscareInterpolationPos = $HeadPosInterpolation
+@onready var jawUp = $JawUp
+@onready var jawDown = $JawDown
 
 @export var growlSounds: Array
+@export var jumpscareSound: AudioStream
+var jumpscareVol: float = -8.0
 
+var timePerStep: float = .7
 var timePerGrowl: Array = [10.0, 30.0]
 
 const JUMPSCARE_DISTANCE = 3.0
@@ -20,7 +27,7 @@ const MAX_SIZE = 6.0
 const GROWTH_SPEED = 0.001 # Scale factors per second
 
 var state = MonsterState.WANDERING
-var speed = 1.0
+var speed = 1.2
 var standupBlending = 0.0
 var size = START_SIZE
 
@@ -31,12 +38,17 @@ enum MonsterState {
 }
 
 var headLookBone
+var downJawBoneIndex
+var upJawBoneIndex
 
 func _ready() -> void:
 	growlTimer.start(randf_range(timePerGrowl[0], timePerGrowl[1]))
+	footstepTimer.start(timePerStep)
 	ani.get_animation("Walk_normal").loop_mode = Animation.LOOP_LINEAR
 	ani.get_animation("Walk_Standing").loop_mode = Animation.LOOP_LINEAR
 	headLookBone = skeleton.find_bone("Bone.006")
+	upJawBoneIndex = skeleton.find_bone("Bone.007")
+	downJawBoneIndex = skeleton.find_bone("Bone.008")
 
 func _physics_process(delta: float) -> void:
 	
@@ -101,7 +113,9 @@ func do_wandering(delta: float):
 	
 	move_to_target(delta)
 	check_sightline()
-	
+
+var downJawPose:Transform3D
+var upJawPose: Transform3D
 func do_following(delta: float):
 	var playerpos = player.global_transform.origin
 	navagent.set_target_position(playerpos)
@@ -112,15 +126,30 @@ func do_following(delta: float):
 	move_to_target(delta)
 	check_sightline()
 	
+	
 	if playerpos.distance_to(global_transform.origin) < JUMPSCARE_DISTANCE:
 		state = MonsterState.JUMPSCARE
 		var bone_pose: Transform3D = skeleton.get_bone_global_pose(headLookBone)
 		var theCam = player.jumpscare_cutscene()
 		theCam.global_position = get_node("CamPosForJumpscare").global_position
 		theCam.look_at(get_node("CamLook").global_position)
+		var upMouthBone: Transform3D = skeleton.get_bone_global_pose(headLookBone)
+		upJawPose = skeleton.get_bone_global_pose(upJawBoneIndex)
+		downJawPose = skeleton.get_bone_global_pose(downJawBoneIndex)
+		jawUp.transform = upJawPose
+		jawUp.global_position += Vector3(0,.1,0)
+		jawDown.transform = downJawPose
+		jawDown.global_position += Vector3(0,-.15,0)
+		skeleton.set_bone_global_pose_override(upJawBoneIndex, jawUp.transform,1.0, true)
+		skeleton.set_bone_global_pose_override(downJawBoneIndex, jawDown.transform,1.0, true)
 		#bone_pose = bone_pose.looking_at(theCam.global_position)
 		jumpscareInterpolationPos.transform = bone_pose
 		skeleton.set_bone_global_pose_override(headLookBone, jumpscareInterpolationPos.transform,1.0, true)
+		growlTimer.stop()
+		footstepTimer.stop()
+		audio.stream = jumpscareSound
+		audio.volume_db = jumpscareVol
+		audio.play(0)
 		interpolateHead()
 
 func interpolateHead():
@@ -133,6 +162,14 @@ func interpolateHead():
 func set_head_pos(pos:Vector3):
 	jumpscareInterpolationPos.global_position = pos
 	skeleton.set_bone_global_pose_override(headLookBone, jumpscareInterpolationPos.transform,1.0, true)
+	jawUp.global_position.x = pos.x
+	jawUp.global_position.z = pos.z
+	jawDown.global_position.x = pos.x
+	jawDown.global_position.z = pos.z 
+	skeleton.set_bone_global_pose_override(upJawBoneIndex, jawUp.transform,1.0, true)
+	skeleton.set_bone_global_pose_override(downJawBoneIndex, jawDown.transform,1.0, true)
+	#skeleton.set_bone_global_pose_override(upJawBoneIndex, jumpscareInterpolationPos.transform,1.0, true)
+	#skeleton.set_bone_global_pose_override(downJawBoneIndex, jumpscareInterpolationPos.transform,1.0, true)
 		
 
 func do_jumpscare(_delta: float):
@@ -143,3 +180,9 @@ func _on_growl_timer_timeout() -> void:
 	audio.stream = growlSounds.pick_random()
 	audio.play(0)
 	growlTimer.start(randf_range(timePerGrowl[0], timePerGrowl[1]))
+
+
+func _on_footstep_timer_timeout() -> void:
+	footstepSrc.play(0)
+	footstepTimer.start(timePerStep)
+	pass # Replace with function body.

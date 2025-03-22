@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckdeppfdu4gv"
 path.bptc="res://.godot/imported/NightSkyHDRI008_4K-HDR.exr-36ef2a0170a0fc6b8576e8853570750a.bptc.ctex"
+path.astc="res://.godot/imported/NightSkyHDRI008_4K-HDR.exr-36ef2a0170a0fc6b8576e8853570750a.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/NightSkyHDRI008_4K-HDR.exr"
-dest_files=["res://.godot/imported/NightSkyHDRI008_4K-HDR.exr-36ef2a0170a0fc6b8576e8853570750a.bptc.ctex"]
+dest_files=["res://.godot/imported/NightSkyHDRI008_4K-HDR.exr-36ef2a0170a0fc6b8576e8853570750a.bptc.ctex", "res://.godot/imported/NightSkyHDRI008_4K-HDR.exr-36ef2a0170a0fc6b8576e8853570750a.astc.ctex"]
 
 [params]
 
