@@ -2,7 +2,8 @@ extends Node3D
 
 @onready var player = get_node("../Player")
 @onready var navagent = $NavigationAgent3D
-@onready var ani = $AnimationPlayer
+@onready var anitree = $AnimationTree
+@onready var ani = $TrueAnimationPlayer
 @onready var audio = $AudioStreamPlayer3D
 @onready var growlTimer = $GrowlTimer
 
@@ -11,8 +12,15 @@ extends Node3D
 var timePerGrowl: Array = [10.0, 30.0]
 
 const JUMPSCARE_DISTANCE = 3.0
+const START_SIZE = 3.0
+const STANDUP_SIZE = 5.0
+const MAX_SIZE = 10.0
+const GROWTH_SPEED = 0.05 # Scale factors per second
+
 var state = MonsterState.WANDERING
-var speed = 3.0
+var speed = 1.0
+var standupBlending = 0.0
+var size = START_SIZE
 
 enum MonsterState {
 	WANDERING,
@@ -22,8 +30,23 @@ enum MonsterState {
 
 func _ready() -> void:
 	growlTimer.start(randf_range(timePerGrowl[0], timePerGrowl[1]))
+	ani.get_animation("Walk_normal").loop_mode = Animation.LOOP_LINEAR
+	ani.get_animation("Walk_Standing").loop_mode = Animation.LOOP_LINEAR
 
 func _physics_process(delta: float) -> void:
+	
+	var motionPaused = false
+	
+	# Grow the monster
+	if size < MAX_SIZE:
+		size += GROWTH_SPEED * delta
+	
+	if size > STANDUP_SIZE and standupBlending < 1.0:
+			standupBlending += 0.1
+			anitree.set("parameters/Blend2/blend_amount", standupBlending)
+	
+	scale = Vector3(size, size, size)
+	
 	match state:
 		MonsterState.WANDERING:
 			do_wandering(delta)
@@ -33,9 +56,10 @@ func _physics_process(delta: float) -> void:
 			do_jumpscare(delta)
 
 func move_to_target(delta: float) -> void:
+	
 	# Move along the navagent's selected path toward the player
 	var next_position = navagent.get_next_path_position()
-	var move_delta = speed * delta
+	var move_delta = speed * size * delta
 	global_transform.origin = global_transform.origin.move_toward(next_position, move_delta)
 	
 	# Rotate towards the target
@@ -51,7 +75,7 @@ func move_to_target(delta: float) -> void:
 	
 func check_sightline():
 	var rayQuery = PhysicsRayQueryParameters3D.new()
-	rayQuery.from = global_transform.origin + 10.0 * Vector3.UP
+	rayQuery.from = global_transform.origin + 10.0 * size * Vector3.UP
 	rayQuery.to = player.global_transform.origin
 	rayQuery.collision_mask = 3
 	
@@ -88,7 +112,7 @@ func do_following(delta: float):
 		state = MonsterState.JUMPSCARE
 
 func do_jumpscare(_delta: float):
-	pass
+	ani.play("Attack_Standing")
 
 
 func _on_growl_timer_timeout() -> void:
