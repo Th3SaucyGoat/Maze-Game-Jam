@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://ben4mrfa3q4gc"]
+[gd_scene load_steps=132 format=3 uid="uid://ben4mrfa3q4gc"]
 
 [ext_resource type="Texture2D" uid="uid://ckdeppfdu4gv" path="res://Assets/NightSkyHDRI008_4K-HDR.exr" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bylhy7qivqr1l" path="res://Assets/Player.tscn" id="2_uu6xs"]
@@ -100,6 +100,7 @@
 [ext_resource type="AudioStream" uid="uid://byeofb4n2gd7h" path="res://Audio/BackgroundRandomSounds/WoodCrack1.mp3" id="97_llcqu"]
 [ext_resource type="AudioStream" uid="uid://hyekw5da501l" path="res://Audio/BackgroundRandomSounds/Laught1.mp3" id="98_al55t"]
 [ext_resource type="AudioStream" uid="uid://bkqfrn0n3idd4" path="res://Audio/BackgroundRandomSounds/Scream5.mp3" id="99_hln0y"]
+[ext_resource type="PackedScene" uid="uid://djso4nihn8u47" path="res://Assets/Barrier.blend" id="101_rg2x5"]
 
 [sub_resource type="Resource" id="Resource_hri7i"]
 script = ExtResource("7_5tuhn")
@@ -771,5 +772,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6382, 3, -2.703)
 
 [node name="Deer" parent="." instance=ExtResource("28_hri7i")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.31679, 0, 106.983)
+
+[node name="Barrier" parent="." instance=ExtResource("101_rg2x5")]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 4.37724, 2.87128, 1.41714)
+visible = false
 
 [connection signal="can_interact" from="Player" to="UI" method="_on_player_can_interact"]

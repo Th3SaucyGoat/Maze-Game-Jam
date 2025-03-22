@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://cbt4xngverymy"]
+[gd_scene load_steps=2 format=3 uid="uid://cbt4xngverymy"]
+
+[ext_resource type="PackedScene" uid="uid://r1gyvjlqhvhw" path="res://Assets/hammer.blend" id="1_hrvps"]
 
 [node name="Hammer" type="Node3D"]
+
+[node name="hammer" parent="." instance=ExtResource("1_hrvps")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

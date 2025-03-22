@@ -95,11 +95,11 @@ func on_area_entered(body: Node3D, area: Area3D):
 		
 		elif objective_stage == ObjectiveStage.RETURN_HOME:
 			currentInteractable = area
+			emit_signal("can_interact", true)
 	
 func on_area_exited(body: Node3D, area: Area3D):
 	if area == currentInteractable:
 		currentInteractable = null
-		print("area exited")
 		emit_signal("can_interact", false)
 		
 
