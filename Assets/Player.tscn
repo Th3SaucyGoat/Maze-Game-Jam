@@ -34,6 +34,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
 
+[node name="Jumpscarelight" type="OmniLight3D" parent="Head/Camera"]
+visible = false
+light_color = Color(1, 1, 0.717647, 1)
+omni_range = 25.0
+
 [node name="Flashlight" type="SpotLight3D" parent="Head"]
 light_color = Color(0.999998, 0.998526, 0.717064, 1)
 light_energy = 10.0

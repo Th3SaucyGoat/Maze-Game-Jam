@@ -8,6 +8,7 @@ signal can_interact(canInteract)
 @onready var camera = $Head/Camera
 @onready var audio = $Audio
 @onready var flashLight = $Head/Flashlight
+@onready var jumpscareLight = $Head/Camera/Jumpscarelight
 
 @onready var house = get_node("../NavigationRegion3D/House")
 
@@ -169,8 +170,21 @@ func victory_camera_pan(delta: float):
 		house.transform.origin, Vector3.UP
 		)
 
-func jumpscare_cutscene(deer: Node3D):
+func jumpscare_cutscene() -> Camera3D:
 	state = PlayerState.JUMPSCARE_CUTSCENE
+	# attach camera
+	#remove_child(flashLight)
+	#camera.add_child(flashLight)
+	#flashLight.position = Vector3.ZERO
+	jumpscareLight.visible = true
+	#head.remove_child(camera)
+	#get_tree().root.add_child(camera)
+	#deerHead.add_child(camera)
+	lose()
+	return camera
+
+func lose():
+	await get_tree().create_timer(3.0).timeout
 	gameManager.gameLost()
 
 func victory_cutscene():

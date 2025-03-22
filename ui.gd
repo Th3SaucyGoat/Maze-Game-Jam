@@ -23,9 +23,9 @@ enum UIState {
 var state = UIState.MAIN_MENU
 
 func _ready() -> void:
-	background.modulate.a = 0.0
-	victoryText.modulate.a = 0.0
-	defeatText.modulate.a = 0.0
+	background.modulate.a = 1.0
+	victoryText.modulate.a = 1.0
+	defeatText.modulate.a = 1.0
 
 func _process(delta: float) -> void:
 	match state:
@@ -33,14 +33,16 @@ func _process(delta: float) -> void:
 			return
 
 func defeat_screen() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var timer = TOTAL_TIME
 	background.visible = true
 	defeatText.visible = true
 	state = UIState.DEFEAT
 
 func victory_screen() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var timer = TOTAL_TIME
-	background.visible = true
+	#background.visible = true
 	victoryText.visible = true
 	state = UIState.VICTORY
 
@@ -67,3 +69,7 @@ func push_notification(message: String) -> void:
 
 func _on_player_can_interact(canInteract) -> void:
 	interactLabel.visible = canInteract
+
+
+func _on_button_pressed() -> void:
+	get_tree().reload_current_scene()

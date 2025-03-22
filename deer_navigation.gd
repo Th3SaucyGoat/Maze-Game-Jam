@@ -6,16 +6,18 @@ extends Node3D
 @onready var ani = $TrueAnimationPlayer
 @onready var audio = $AudioStreamPlayer3D
 @onready var growlTimer = $GrowlTimer
+@onready var skeleton = $Deer/Skeleton3D
+@onready var jumpscareInterpolationPos = $HeadPosInterpolation
 
 @export var growlSounds: Array
 
 var timePerGrowl: Array = [10.0, 30.0]
 
 const JUMPSCARE_DISTANCE = 3.0
-const START_SIZE = 3.0
-const STANDUP_SIZE = 5.0
-const MAX_SIZE = 10.0
-const GROWTH_SPEED = 0.05 # Scale factors per second
+const START_SIZE = 2.0
+const STANDUP_SIZE = 4.0
+const MAX_SIZE = 6.0
+const GROWTH_SPEED = 0.001 # Scale factors per second
 
 var state = MonsterState.WANDERING
 var speed = 1.0
@@ -28,10 +30,13 @@ enum MonsterState {
 	JUMPSCARE,
 }
 
+var headLookBone
+
 func _ready() -> void:
 	growlTimer.start(randf_range(timePerGrowl[0], timePerGrowl[1]))
 	ani.get_animation("Walk_normal").loop_mode = Animation.LOOP_LINEAR
 	ani.get_animation("Walk_Standing").loop_mode = Animation.LOOP_LINEAR
+	headLookBone = skeleton.find_bone("Bone.006")
 
 func _physics_process(delta: float) -> void:
 	
@@ -108,11 +113,30 @@ func do_following(delta: float):
 	check_sightline()
 	
 	if playerpos.distance_to(global_transform.origin) < JUMPSCARE_DISTANCE:
-		player.jumpscare_cutscene(self)
 		state = MonsterState.JUMPSCARE
+		var bone_pose: Transform3D = skeleton.get_bone_global_pose(headLookBone)
+		var theCam = player.jumpscare_cutscene()
+		theCam.global_position = get_node("CamPosForJumpscare").global_position
+		theCam.look_at(get_node("CamLook").global_position)
+		#bone_pose = bone_pose.looking_at(theCam.global_position)
+		jumpscareInterpolationPos.transform = bone_pose
+		skeleton.set_bone_global_pose_override(headLookBone, jumpscareInterpolationPos.transform,1.0, true)
+		interpolateHead()
+
+func interpolateHead():
+	var tween = create_tween()
+	var camPos = get_node("CamPosForJumpscare")
+	tween.tween_method(set_head_pos, jumpscareInterpolationPos.global_position, camPos.global_position, 1.0).set_delay(2.0)
+	#skeleton.set_bone_global_pose_override(headLookBone, camPos.transform,1.0, true)
+	#pass
+
+func set_head_pos(pos:Vector3):
+	jumpscareInterpolationPos.global_position = pos
+	skeleton.set_bone_global_pose_override(headLookBone, jumpscareInterpolationPos.transform,1.0, true)
+		
 
 func do_jumpscare(_delta: float):
-	ani.play("Attack_Standing")
+	pass
 
 
 func _on_growl_timer_timeout() -> void:

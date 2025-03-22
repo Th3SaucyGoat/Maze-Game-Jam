@@ -345,7 +345,7 @@ ambient_light_energy = 0.4
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_uu6xs")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.76956, 12.8969, 27.273)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.76956, 3.87292, 97.1695)
 collision_layer = 13
 
 [node name="TerraBrush" type="Node3D" parent="."]
@@ -771,7 +771,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4472, 3, -2.703)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6382, 3, -2.703)
 
 [node name="Deer" parent="." instance=ExtResource("28_hri7i")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.31679, 0, 106.983)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.31679, 0, 106.983)
 
 [node name="Barrier" parent="." instance=ExtResource("101_rg2x5")]
 transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 4.37724, 2.87128, 1.41714)
