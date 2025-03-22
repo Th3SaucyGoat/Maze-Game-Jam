@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Maze Game Idea"
-run/main_scene="uid://ben4mrfa3q4gc"
+run/main_scene="uid://dhgwf07fkn8dp"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 

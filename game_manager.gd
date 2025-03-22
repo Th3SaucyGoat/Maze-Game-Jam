@@ -26,7 +26,6 @@ var spawnPositions: Array
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawnPositions = get_children()
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	#var h = house.instantiate()
 	#add_child(h)
 	#h.global_position = Vector3(0, 0, 0)

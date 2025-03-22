@@ -15,7 +15,7 @@ extends Node3D
 
 @export var growlSounds: Array
 @export var jumpscareSound: AudioStream
-var jumpscareVol: float = -8.0
+var jumpscareVol: float = -9.0
 
 var timePerStep: float = .7
 var timePerGrowl: Array = [10.0, 30.0]
@@ -24,10 +24,11 @@ const JUMPSCARE_DISTANCE = 3.0
 const START_SIZE = 2.0
 const STANDUP_SIZE = 4.0
 const MAX_SIZE = 6.0
-const GROWTH_SPEED = 0.001 # Scale factors per second
+const GROWTH_SPEED = 0.006 # Scale factors per second
 
 var state = MonsterState.WANDERING
-var speed = 1.2
+var speed = 1.7
+var maxspeed = 3.0
 var standupBlending = 0.0
 var size = START_SIZE
 
@@ -49,6 +50,12 @@ func _ready() -> void:
 	headLookBone = skeleton.find_bone("Bone.006")
 	upJawBoneIndex = skeleton.find_bone("Bone.007")
 	downJawBoneIndex = skeleton.find_bone("Bone.008")
+	var timeToGrow = (MAX_SIZE-START_SIZE)/GROWTH_SPEED
+	var f = speed
+	get_tree().create_tween().tween_method(increase_speed, f, maxspeed, timeToGrow)
+
+func increase_speed(value):
+	speed = value
 
 func _physics_process(delta: float) -> void:
 	
@@ -57,6 +64,7 @@ func _physics_process(delta: float) -> void:
 	# Grow the monster
 	if size < MAX_SIZE:
 		size += GROWTH_SPEED * delta
+		
 	
 	if size > STANDUP_SIZE and standupBlending < 1.0:
 			standupBlending += 0.1

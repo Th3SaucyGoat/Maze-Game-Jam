@@ -1,7 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjtriwfkdpgyb"]
+[gd_scene load_steps=12 format=3 uid="uid://bjtriwfkdpgyb"]
 
 [ext_resource type="Script" uid="uid://dhd0rsj3e6dir" path="res://ui.gd" id="1_3b2b5"]
 [ext_resource type="Script" uid="uid://c1ekvr8a42r23" path="res://message_label.gd" id="2_g6l6n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g6l6n"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_qui0h"]
+font_size = 24
 
 [sub_resource type="Gradient" id="Gradient_ac6pf"]
 colors = PackedColorArray(0, 0, 0, 1, 0.0119, 0.0157733, 0.07, 1)
@@ -13,6 +19,9 @@ gradient = SubResource("Gradient_ac6pf")
 font_size = 100
 font_color = Color(0.304, 0.535467, 0.8, 1)
 
+[sub_resource type="Theme" id="Theme_3b2b5"]
+default_font_size = 25
+
 [sub_resource type="LabelSettings" id="LabelSettings_4bst2"]
 font_size = 100
 font_color = Color(0.56, 0.1232, 0.13048, 1)
@@ -21,7 +30,7 @@ font_color = Color(0.56, 0.1232, 0.13048, 1)
 font_size = 22
 
 [sub_resource type="LabelSettings" id="LabelSettings_3b2b5"]
-font_size = 32
+font_size = 24
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_3b2b5")
@@ -39,6 +48,7 @@ offset_top = 12.0
 offset_right = 364.0
 offset_bottom = 69.0
 text = "Objective: Find Your House In The Maze"
+label_settings = SubResource("LabelSettings_g6l6n")
 
 [node name="ItemLabel" type="Label" parent="Objective"]
 layout_mode = 0
@@ -46,6 +56,7 @@ offset_left = -2.0
 offset_top = 31.0
 offset_right = 254.0
 offset_bottom = 101.0
+label_settings = SubResource("LabelSettings_qui0h")
 
 [node name="Background" type="Sprite2D" parent="."]
 visible = false
@@ -59,10 +70,19 @@ offset_left = 254.0
 offset_top = -63.0
 offset_right = 856.0
 offset_bottom = 304.0
-text = "Victory"
+text = "Victory!"
 label_settings = SubResource("LabelSettings_oaklg")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="Victory"]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 367.0
+offset_right = 373.0
+offset_bottom = 410.0
+theme = SubResource("Theme_3b2b5")
+text = "Main Menu"
 
 [node name="Defeat" type="Label" parent="."]
 visible = false
@@ -70,7 +90,7 @@ offset_left = 82.0
 offset_top = 1.0
 offset_right = 1074.0
 offset_bottom = 310.0
-text = "BAD END"
+text = "You Died!"
 label_settings = SubResource("LabelSettings_4bst2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -83,6 +103,16 @@ offset_right = 430.0
 offset_bottom = 426.0
 scale = Vector2(3.43845, 3.05164)
 text = "Retry"
+
+[node name="MainMenuButton" type="Button" parent="Defeat"]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 275.0
+offset_right = 409.0
+offset_bottom = 306.0
+scale = Vector2(3.43845, 3.05164)
+text = "Main Menu
+"
 
 [node name="MainMenu" type="Node2D" parent="."]
 visible = false
@@ -108,13 +138,29 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="InteractLabel" type="Label" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InteractLabel" type="Label" parent="Control"]
 visible = false
-offset_left = 117.0
-offset_top = 499.0
-offset_right = 157.0
-offset_bottom = 522.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = -398.0
+offset_right = 412.0
+offset_bottom = -364.0
+grow_vertical = 0
 text = "\"F\" to Interact"
 label_settings = SubResource("LabelSettings_3b2b5")
 
+[connection signal="pressed" from="Victory/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="Defeat/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Defeat/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

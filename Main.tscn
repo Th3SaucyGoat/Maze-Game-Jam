@@ -135,7 +135,7 @@ cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("12_5tuhn")
 
-[sub_resource type="QuadMesh" id="QuadMesh_3b0ty"]
+[sub_resource type="QuadMesh" id="QuadMesh_ix6bv"]
 material = SubResource("StandardMaterial3D_devvj")
 size = Vector2(2, 2)
 center_offset = Vector3(0, 0.45, 0)
@@ -143,7 +143,7 @@ center_offset = Vector3(0, 0.45, 0)
 [sub_resource type="Resource" id="Resource_bg4s2"]
 script = ExtResource("13_5tuhn")
 Strategy = 2
-Mesh = SubResource("QuadMesh_3b0ty")
+Mesh = SubResource("QuadMesh_ix6bv")
 MeshScale = Vector3(1, 1, 1)
 WindStrength = 0.1
 VisualInstanceLayers = 1
@@ -167,12 +167,12 @@ script = ExtResource("14_2gh4u")
 Definition = SubResource("Resource_bg4s2")
 metadata/_custom_type_script = "uid://d33x21vao7tj2"
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yf3a2"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_2kjvi"]
 
 [sub_resource type="Resource" id="Resource_gdb40"]
 script = ExtResource("13_5tuhn")
 Strategy = 1
-Mesh = SubResource("ArrayMesh_yf3a2")
+Mesh = SubResource("ArrayMesh_2kjvi")
 MeshScale = Vector3(1, 1, 1)
 WindStrength = 0.1
 VisualInstanceLayers = 1
@@ -330,13 +330,13 @@ size = Vector3(248.761, 0.372, 291.737)
 panorama = ExtResource("1_glv2v")
 energy_multiplier = 0.5
 
-[sub_resource type="Sky" id="Sky_r0du0"]
+[sub_resource type="Sky" id="Sky_rg2x5"]
 sky_material = SubResource("PanoramaSkyMaterial_uu6xs")
 
 [sub_resource type="Environment" id="Environment_rxg2q"]
 background_mode = 2
 background_energy_multiplier = 0.5
-sky = SubResource("Sky_r0du0")
+sky = SubResource("Sky_rg2x5")
 ambient_light_source = 3
 ambient_light_color = Color(0.16781, 0.16781, 0.16781, 1)
 ambient_light_sky_contribution = 0.1

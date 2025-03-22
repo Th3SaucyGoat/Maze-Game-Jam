@@ -9,7 +9,7 @@ const ResourceType = preload("res://resource_type.gd").ResourceType
 @onready var background = $Background
 @onready var victoryText = $Victory
 @onready var defeatText = $Defeat
-@onready var interactLabel = $InteractLabel
+@onready var interactLabel = $Control/InteractLabel
 
 @onready var ItemLabel = $Objective/ItemLabel
 
@@ -73,3 +73,8 @@ func _on_player_can_interact(canInteract) -> void:
 
 func _on_button_pressed() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_main_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+	pass # Replace with function body.
